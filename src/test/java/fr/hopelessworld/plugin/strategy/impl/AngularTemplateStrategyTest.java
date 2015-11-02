@@ -42,7 +42,7 @@ public class AngularTemplateStrategyTest {
 		when(entity.getFields()).thenReturn(fields);
 
 		fields.add(createIdField());
-		fields.add(createMockField("name", String.class.toString()));
+		fields.add(createMockField("name", String.class.getCanonicalName()));
 
 		CharSequence sequence = strategy.generate(entities);
 
@@ -52,6 +52,19 @@ public class AngularTemplateStrategyTest {
 				+ "Player:'<h1>{{data.name}}</h1>" 
 				+ "{{!-- id not show --}}"
 				+ "{{'entity.Player.name' | translate }}:{{data.name}}<br />'"
+				
+				+ ","
+				
+				+ "PlayerEdit:'" 
+				+ "<h1>{{data.name}}</h1>" 
+				+ "<form action=\"#\" ng-submit=\"save()\">"
+				+ "{{!-- id not show --}}"
+				+ "<div ng-class=\"{'has-error': error != undefined && error.indexOf('name') != -1}\" class=\"input-group\">"
+				+ "<span class=\"input-group-addon\">name</span>"
+				+ "<input type=\"text\" placeholder=\"name\" ng-model=\"data.name\" class=\"form-control\">"
+				+ "</div>"
+				+ "<input type=\"submit\">"
+				+ "</form>'"
 				+ "};";
 		// @formatter:on
 
@@ -82,6 +95,22 @@ public class AngularTemplateStrategyTest {
 				+ "{{!-- id not show --}}"
 				+ "{{'entity.Player.name' | translate }}:{{data.name}}<br />"
 				+ "{{'entity.Player.creation' | translate }}:{{data.creation | date:'medium'}}<br />'"
+				+ ","
+				
+				+ "PlayerEdit:'" 
+				+ "<h1>{{data.name}}</h1>" 
+				+ "<form action=\"#\" ng-submit=\"save()\">"
+				+ "{{!-- id not show --}}"
+				+ "<div ng-class=\"{'has-error': error != undefined && error.indexOf('name') != -1}\" class=\"input-group\">"
+				+ "<span class=\"input-group-addon\">name</span>"
+				+ "<input type=\"text\" placeholder=\"name\" ng-model=\"data.name\" class=\"form-control\">"
+				+ "</div>"
+				+ "<div ng-class=\"{'has-error': error != undefined && error.indexOf('creation') != -1}\" class=\"input-group\">"
+				+ "<span class=\"input-group-addon\">creation</span>"
+				+ "<input type=\"datetime-local\" placeholder=\"creation\" ng-model=\"data.creation\" class=\"form-control\">"
+				+ "</div>"
+				+ "<input type=\"submit\">"
+				+ "</form>'"
 				+ "};";
 		// @formatter:on
 
@@ -107,7 +136,7 @@ public class AngularTemplateStrategyTest {
 		Collection<Field> teamFields = new ArrayList<>();
 		when(teamEntity.getFields()).thenReturn(teamFields);
 		teamFields.add(createIdField());
-		teamFields.add(createMockField("name", String.class.toString()));
+		teamFields.add(createMockField("name", String.class.getCanonicalName()));
 
 		playerfields.add(createEntityMockField("team", teamEntity));
 
@@ -123,10 +152,42 @@ public class AngularTemplateStrategyTest {
 				+ "{{!-- id not show --}}"
 				+ "{{'entity.Player.name' | translate }}:{{data.name}}<br />"
 				+ "{{'entity.Player.team' | translate }}:<a href=\"#/team/{{data.team.id}}\">{{data.team.name}}</a><br />'"
+				+ ","
+				+ "PlayerEdit:'" 
+				+ "<h1>{{data.name}}</h1>" 
+				+ "<form action=\"#\" ng-submit=\"save()\">"
+				+ "{{!-- id not show --}}"
+				+ "<div ng-class=\"{'has-error': error != undefined && error.indexOf('name') != -1}\" class=\"input-group\">"
+				+ "<span class=\"input-group-addon\">name</span>"
+				+ "<input type=\"text\" placeholder=\"name\" ng-model=\"data.name\" class=\"form-control\">"
+				+ "</div>"
+				+ "<div ng-class=\"{'has-error': error != undefined && error.indexOf('team') != -1}\" class=\"input-group\">"
+				+ "<span class=\"input-group-addon\">team</span>"
+				+ "{{!-- TODO --}}"
+				+ "</div>"
+				+ "<input type=\"submit\">"
+				+ "</form>'"
+				
+				
 				+ "," //une autre entité
+				
 				+ "Team:'<h1>{{data.name}}</h1>"
 				+ "{{!-- id not show --}}"
 				+ "{{'entity.Team.name' | translate }}:{{data.name}}<br />'"
+				
+				+ "," 
+				
+				+ "TeamEdit:'" 
+				+ "<h1>{{data.name}}</h1>" 
+				+ "<form action=\"#\" ng-submit=\"save()\">"
+				+ "{{!-- id not show --}}"
+				+ "<div ng-class=\"{'has-error': error != undefined && error.indexOf('name') != -1}\" class=\"input-group\">"
+				+ "<span class=\"input-group-addon\">name</span>"
+				+ "<input type=\"text\" placeholder=\"name\" ng-model=\"data.name\" class=\"form-control\">"
+				+ "</div>"
+				+ "<input type=\"submit\">"
+				+ "</form>'"
+				
 				+ "};";
 		// @formatter:on
 
@@ -152,7 +213,7 @@ public class AngularTemplateStrategyTest {
 		Collection<Field> teamFields = new ArrayList<>();
 		when(teamEntity.getFields()).thenReturn(teamFields);
 		teamFields.add(createIdField());
-		teamFields.add(createMockField("name", String.class.toString()));
+		teamFields.add(createMockField("name", String.class.getCanonicalName()));
 		teamFields.add(createOneToManyMockField("players", "player", playerEntity));
 
 		playerfields.add(createEntityMockField("team", teamEntity));
@@ -169,6 +230,23 @@ public class AngularTemplateStrategyTest {
 				+ "{{!-- id not show --}}"
 				+ "{{'entity.Player.name' | translate }}:{{data.name}}<br />"
 				+ "{{'entity.Player.team' | translate }}:<a href=\"#/team/{{data.team.id}}\">{{data.team.name}}</a><br />'"
+				
+				+ ","
+				+ "PlayerEdit:'" 
+				+ "<h1>{{data.name}}</h1>" 
+				+ "<form action=\"#\" ng-submit=\"save()\">"
+				+ "{{!-- id not show --}}"
+				+ "<div ng-class=\"{'has-error': error != undefined && error.indexOf('name') != -1}\" class=\"input-group\">"
+				+ "<span class=\"input-group-addon\">name</span>"
+				+ "<input type=\"text\" placeholder=\"name\" ng-model=\"data.name\" class=\"form-control\">"
+				+ "</div>"
+				+ "<div ng-class=\"{'has-error': error != undefined && error.indexOf('team') != -1}\" class=\"input-group\">"
+				+ "<span class=\"input-group-addon\">team</span>"
+				+ "{{!-- TODO --}}"
+				+ "</div>"
+				+ "<input type=\"submit\">"
+				+ "</form>'"
+				
 				+ "," //une autre entité
 				+ "Team:'<h1>{{data.name}}</h1>"
 				+ "{{!-- id not show --}}"
@@ -176,6 +254,25 @@ public class AngularTemplateStrategyTest {
 				+ "{{'entity.Team.players' | translate }}:<ul><li ng-repeat=\"entity in data.players\">"
 				+ "<a href=\"#/player/{{entity.id}}\">{{entity.name}}</a>"
 				+ "</li></ul><br />'"
+				
+				+ ","
+				
+				+ "TeamEdit:'" 
+				+ "<h1>{{data.name}}</h1>" 
+				+ "<form action=\"#\" ng-submit=\"save()\">"
+				+ "{{!-- id not show --}}"
+				+ "<div ng-class=\"{'has-error': error != undefined && error.indexOf('name') != -1}\" class=\"input-group\">"
+				+ "<span class=\"input-group-addon\">name</span>"
+				+ "<input type=\"text\" placeholder=\"name\" ng-model=\"data.name\" class=\"form-control\">"
+				+ "</div>"
+				+ "<div ng-class=\"{'has-error': error != undefined && error.indexOf('players') != -1}\" class=\"input-group\">"
+				+ "<span class=\"input-group-addon\">players</span>"
+				+ "{{!-- TODO --}}"
+				+ "</div>"
+				+ "<input type=\"submit\">"
+				+ "</form>'"
+				
+				
 				+ "};";
 		// @formatter:on
 

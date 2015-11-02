@@ -3,6 +3,8 @@ package fr.hopelessworld.plugin.strategy.impl;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.lang.model.type.TypeKind;
+import javax.lang.model.type.TypeMirror;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -44,6 +46,8 @@ public class AngularTemplateStrategy extends AbstractUniqueFileGeneratorStrategy
 				first = false;
 			}
 			templates.append(this.getShowForEntity(entity));
+			templates.append(",");
+			templates.append(this.getEditForEntity(entity));
 
 		}
 		templates.append("};");
@@ -115,6 +119,88 @@ public class AngularTemplateStrategy extends AbstractUniqueFileGeneratorStrategy
 
 		output.append("'");
 
+		return output;
+	}
+
+	private CharSequence getEditForEntity(AnalizedEntity entity) {
+		StringBuilder output = new StringBuilder();
+
+		String entityName = entity.getSimpleName();
+
+		output.append(entityName).append("Edit:'");
+		output.append("<h1>{{").append(this.getShowName("data.", entity)).append("}}</h1>");
+
+		output.append("<form action=\"#\" ng-submit=\"save()\">");
+
+		for (Field field : entity.getFields()) {
+
+			if (field.getAnnotation(Id.class) != null) {
+				output.append("{{!-- id not show --}}");
+			} else {
+				CharSequence fieldName = field.getSimpleName();
+
+				output.append("<div ng-class=\"{'has-error': error != undefined && error.indexOf('").append(fieldName)
+						.append("') != -1}\" class=\"input-group\">");
+
+				output.append("<span class=\"input-group-addon\">").append(fieldName).append("</span>");
+				// <input type="text" placeholder="name" ng-model="data.name"
+				// class="form-control">
+
+				if (field.getAnnotation(ManyToOne.class) != null || field.getAnnotation(OneToOne.class) != null) {
+					/** c'est 1 entité */
+					output.append("{{!-- TODO --}}");
+				} else if (field.getAnnotation(OneToMany.class) != null
+						|| field.getAnnotation(ManyToMany.class) != null) {
+					/* une liste */
+					output.append("{{!-- TODO --}}");
+				} else if (field.getAnnotation(Column.class) != null) {
+					/* un champ basic */
+					TypeMirror typeMirror = field.asType();
+
+					if (String.class.getCanonicalName().equals(typeMirror.toString())) {
+						// type String
+						output.append("<input type=\"text\" placeholder=\"").append(fieldName)
+								.append("\" ng-model=\"data.").append(fieldName).append("\" class=\"form-control\">");
+
+					} else if (Date.class.getCanonicalName().equals(typeMirror.toString())) {
+						// type date
+						output.append("<input type=\"datetime-local\" placeholder=\"").append(fieldName)
+								.append("\" ng-model=\"data.").append(fieldName).append("\" class=\"form-control\">");
+					} else if (field.asType().getKind() == TypeKind.LONG
+							|| Long.class.getCanonicalName().equals(typeMirror.toString())
+							|| field.asType().getKind() == TypeKind.INT
+							|| Integer.class.getCanonicalName().equals(typeMirror.toString())) {
+						// tye number
+						output.append("<input type=\"number\" placeholder=\"").append(fieldName)
+								.append("\" ng-model=\"data.").append(fieldName).append("\" class=\"form-control\">");
+					} else if (field.asType().getKind() == TypeKind.BOOLEAN
+							|| Boolean.class.getCanonicalName().equals(typeMirror.toString())) {
+						// type boolean
+						output.append("<input type=\"checkbox\" placeholder=\"").append(fieldName)
+								.append("\" ng-model=\"data.").append(fieldName).append("\" class=\"form-control\">");
+					} else {
+						// autre type (inconu)
+						output.append("{{!-- unknow type --}}");
+					}
+
+				}
+				output.append("</div>");
+			}
+		}
+		// @formatter:off
+		// <form action="#" ng-submit="save()">
+		// <div ng-class="{'has-error': error != undefined && error.indexOf('name') != -1} " class="input-group">
+		// <span class="input-group-addon">name</span> <input type="text" placeholder="name" ng-model="data.name" class="form-control">
+		// </div>
+		// <div ng-class="{'has-error': error != undefined && error.indexOf('content') != -1} " class="input-group">
+		// <span class="input-group-addon">content</span><textarea placeholder="content" ng-model="data.content" class="form-control"></textarea>
+		// </div>
+		// <input type="submit">
+		// </form>
+		// @formatter:on
+		output.append("<input type=\"submit\">");
+		output.append("</form>");
+		output.append("'");
 		return output;
 	}
 
