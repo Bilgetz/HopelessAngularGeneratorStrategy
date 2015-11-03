@@ -48,6 +48,8 @@ public class AngularTemplateStrategy extends AbstractUniqueFileGeneratorStrategy
 			templates.append(this.getShowForEntity(entity));
 			templates.append(",");
 			templates.append(this.getEditForEntity(entity));
+			templates.append(",");
+			templates.append(this.getListForEntity(entity));
 
 		}
 		templates.append("};");
@@ -187,19 +189,41 @@ public class AngularTemplateStrategy extends AbstractUniqueFileGeneratorStrategy
 				output.append("</div>");
 			}
 		}
-		// @formatter:off
-		// <form action="#" ng-submit="save()">
-		// <div ng-class="{'has-error': error != undefined && error.indexOf('name') != -1} " class="input-group">
-		// <span class="input-group-addon">name</span> <input type="text" placeholder="name" ng-model="data.name" class="form-control">
-		// </div>
-		// <div ng-class="{'has-error': error != undefined && error.indexOf('content') != -1} " class="input-group">
-		// <span class="input-group-addon">content</span><textarea placeholder="content" ng-model="data.content" class="form-control"></textarea>
-		// </div>
-		// <input type="submit">
-		// </form>
-		// @formatter:on
+
 		output.append("<input type=\"submit\">");
 		output.append("</form>");
+		output.append("'");
+		return output;
+	}
+
+	/**
+	 * Gets the list for entity.
+	 *
+	 * @param entity
+	 *            the entity
+	 * @return the list for entity
+	 */
+	private CharSequence getListForEntity(AnalizedEntity entity) {
+		StringBuilder output = new StringBuilder();
+
+		String entityName = entity.getSimpleName();
+
+		output.append(entityName).append("List:'");
+		output.append("<div ng-hide=\"loading\">");
+		output.append("<ng-paging page=\"page\" page-changed=\"pageChanged()\" ></ng-paging>");
+		output.append("<ng-filtering sub-resources=\"subResources\" ");
+		output.append("criteria-field=\"criteriaField\" criterias =\"criterias\" ");
+		output.append("criteria-changed=\"pageChanged()\" ></ng-filtering>");
+		output.append("<div ng-repeat=\"entity in entities\">");
+		output.append("<a href=\"");
+		output.append(this.getUrlForEntity("entity", entity));
+		output.append("\">{{");
+		output.append(this.getShowName("entity.", entity));
+		output.append("}}</a>");
+		output.append("<hr />");
+		output.append("</div>");
+		output.append("</div>");
+
 		output.append("'");
 		return output;
 	}
@@ -219,6 +243,15 @@ public class AngularTemplateStrategy extends AbstractUniqueFileGeneratorStrategy
 		return StringUtils.join("#/", nameOfFieldEntity, "/{{", name, ".", idField.getSimpleName(), "}}");
 	}
 
+	/**
+	 * Gets the show name.
+	 *
+	 * @param name
+	 *            the name
+	 * @param entity
+	 *            the entity
+	 * @return the show name
+	 */
 	private String getShowName(String name, AnalizedEntity entity) {
 
 		Field fieldName = CollectionUtils.find(entity.getFields(), this.nameSimpleNamePredicate);

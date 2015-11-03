@@ -65,6 +65,23 @@ public class AngularTemplateStrategyTest {
 				+ "</div>"
 				+ "<input type=\"submit\">"
 				+ "</form>'"
+				
+				+ ","
+				
+				+"PlayerList:'"
+				+"<div ng-hide=\"loading\">"
+				+"<ng-paging page=\"page\" page-changed=\"pageChanged()\" ></ng-paging>"
+				+"<ng-filtering sub-resources=\"subResources\" "
+				+"criteria-field=\"criteriaField\" criterias =\"criterias\" "
+				+"criteria-changed=\"pageChanged()\" ></ng-filtering>"
+				+"<div ng-repeat=\"entity in entities\">"
+				+"<a href=\"#/player/{{entity.id}}\">"
+				+"{{entity.name}}"
+				+"</a>"
+				+"<hr />"
+				+"</div>"
+				+"</div>'"
+				
 				+ "};";
 		// @formatter:on
 
@@ -111,6 +128,23 @@ public class AngularTemplateStrategyTest {
 				+ "</div>"
 				+ "<input type=\"submit\">"
 				+ "</form>'"
+				
+				+ ","
+				
+				+"PlayerList:'"
+				+"<div ng-hide=\"loading\">"
+				+"<ng-paging page=\"page\" page-changed=\"pageChanged()\" ></ng-paging>"
+				+"<ng-filtering sub-resources=\"subResources\" "
+				+"criteria-field=\"criteriaField\" criterias =\"criterias\" "
+				+"criteria-changed=\"pageChanged()\" ></ng-filtering>"
+				+"<div ng-repeat=\"entity in entities\">"
+				+"<a href=\"#/player/{{entity.id}}\">"
+				+"{{entity.name}}"
+				+"</a>"
+				+"<hr />"
+				+"</div>"
+				+"</div>'"
+				
 				+ "};";
 		// @formatter:on
 
@@ -168,6 +202,22 @@ public class AngularTemplateStrategyTest {
 				+ "<input type=\"submit\">"
 				+ "</form>'"
 				
+				+ ","
+				
+				+"PlayerList:'"
+				+"<div ng-hide=\"loading\">"
+				+"<ng-paging page=\"page\" page-changed=\"pageChanged()\" ></ng-paging>"
+				+"<ng-filtering sub-resources=\"subResources\" "
+				+"criteria-field=\"criteriaField\" criterias =\"criterias\" "
+				+"criteria-changed=\"pageChanged()\" ></ng-filtering>"
+				+"<div ng-repeat=\"entity in entities\">"
+				+"<a href=\"#/player/{{entity.id}}\">"
+				+"{{entity.name}}"
+				+"</a>"
+				+"<hr />"
+				+"</div>"
+				+"</div>'"
+				
 				
 				+ "," //une autre entité
 				
@@ -187,6 +237,23 @@ public class AngularTemplateStrategyTest {
 				+ "</div>"
 				+ "<input type=\"submit\">"
 				+ "</form>'"
+				
+				+ ","
+				
+				+"TeamList:'"
+				+"<div ng-hide=\"loading\">"
+				+"<ng-paging page=\"page\" page-changed=\"pageChanged()\" ></ng-paging>"
+				+"<ng-filtering sub-resources=\"subResources\" "
+				+"criteria-field=\"criteriaField\" criterias =\"criterias\" "
+				+"criteria-changed=\"pageChanged()\" ></ng-filtering>"
+				+"<div ng-repeat=\"entity in entities\">"
+				+"<a href=\"#/team/{{entity.id}}\">"
+				+"{{entity.name}}"
+				+"</a>"
+				+"<hr />"
+				+"</div>"
+				+"</div>'"
+				
 				
 				+ "};";
 		// @formatter:on
@@ -247,6 +314,23 @@ public class AngularTemplateStrategyTest {
 				+ "<input type=\"submit\">"
 				+ "</form>'"
 				
+				+ ","
+				
+				+"PlayerList:'"
+				+"<div ng-hide=\"loading\">"
+				+"<ng-paging page=\"page\" page-changed=\"pageChanged()\" ></ng-paging>"
+				+"<ng-filtering sub-resources=\"subResources\" "
+				+"criteria-field=\"criteriaField\" criterias =\"criterias\" "
+				+"criteria-changed=\"pageChanged()\" ></ng-filtering>"
+				+"<div ng-repeat=\"entity in entities\">"
+				+"<a href=\"#/player/{{entity.id}}\">"
+				+"{{entity.name}}"
+				+"</a>"
+				+"<hr />"
+				+"</div>"
+				+"</div>'"
+				
+				
 				+ "," //une autre entité
 				+ "Team:'<h1>{{data.name}}</h1>"
 				+ "{{!-- id not show --}}"
@@ -272,6 +356,21 @@ public class AngularTemplateStrategyTest {
 				+ "<input type=\"submit\">"
 				+ "</form>'"
 				
+				+ ","
+				
+				+"TeamList:'"
+				+"<div ng-hide=\"loading\">"
+				+"<ng-paging page=\"page\" page-changed=\"pageChanged()\" ></ng-paging>"
+				+"<ng-filtering sub-resources=\"subResources\" "
+				+"criteria-field=\"criteriaField\" criterias =\"criterias\" "
+				+"criteria-changed=\"pageChanged()\" ></ng-filtering>"
+				+"<div ng-repeat=\"entity in entities\">"
+				+"<a href=\"#/team/{{entity.id}}\">"
+				+"{{entity.name}}"
+				+"</a>"
+				+"<hr />"
+				+"</div>"
+				+"</div>'"
 				
 				+ "};";
 		// @formatter:on
