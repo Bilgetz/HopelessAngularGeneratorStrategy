@@ -174,7 +174,13 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "{id: 'team', value:'team', type: 'entity'}"
 				+ "];"
 				+ "$scope.criteriaOperation = [{id: ':', value:'='}, {id: '<', value:'<='}, {id: '>', value:'>='}];"
-				+ "$scope.subResources = {};"
+				+ "$scope.subResources = {team:[]};"
+				
+				+ "$TeamFactory.find().then(function(result) {"
+				+ "$scope.subResources.team = result.entities;"
+				+ "}, function(msg) {"
+				+ "alert(msg);"
+				+ "});"
 				
 				+ "$scope.pageChanged = function() {"
 					+ "$rootScope.loading = true;"
@@ -312,7 +318,13 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "{id: 'team', value:'team', type: 'entity'}"
 				+ "];"
 				+ "$scope.criteriaOperation = [{id: ':', value:'='}, {id: '<', value:'<='}, {id: '>', value:'>='}];"
-				+ "$scope.subResources = {};"
+				+ "$scope.subResources = {team:[]};"
+				
+				+ "$TeamFactory.find().then(function(result) {"
+				+ "$scope.subResources.team = result.entities;"
+				+ "}, function(msg) {"
+				+ "alert(msg);"
+				+ "});"
 				
 				+ "$scope.pageChanged = function() {"
 					+ "$rootScope.loading = true;"
@@ -377,7 +389,13 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "{id: 'players', value:'players', type: 'entity'}"
 				+ "];"
 				+ "$scope.criteriaOperation = [{id: ':', value:'='}, {id: '<', value:'<='}, {id: '>', value:'>='}];"
-				+ "$scope.subResources = {};"
+				+ "$scope.subResources = {players:[]};"
+				
+				+ "$PlayerFactory.find().then(function(result) {"
+				+ "$scope.subResources.players = result.entities;"
+				+ "}, function(msg) {"
+				+ "alert(msg);"
+				+ "});"
 				
 				+ "$scope.pageChanged = function() {"
 				+ "$rootScope.loading = true;"

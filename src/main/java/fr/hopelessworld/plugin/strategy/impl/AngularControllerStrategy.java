@@ -127,7 +127,18 @@ public class AngularControllerStrategy extends AbstractUniqueFileGeneratorStrate
 		controller.append(
 				"$scope.criteriaOperation = [{id: ':', value:'='}, {id: '<', value:'<='}, {id: '>', value:'>='}];");
 		// TODO : subressource
-		controller.append("$scope.subResources = {};");
+		controller.append("$scope.subResources = {");
+		controller.append(this.subResourceToLoad(subEntityFields, "", ":[]"));
+		controller.append("};");
+
+		for (Field field : subEntityFields) {
+			controller.append("$").append(field.asAnalyzedEntity().getSimpleName())
+					.append("Factory.find().then(function(result) {");
+			controller.append("$scope.subResources.").append(field.getSimpleName()).append(" = result.entities;");
+			controller.append("}, function(msg) {");
+			controller.append("alert(msg);");
+			controller.append("});");
+		}
 
 		// pageChanged function in scope
 
@@ -188,7 +199,6 @@ public class AngularControllerStrategy extends AbstractUniqueFileGeneratorStrate
 		List<Field> subEntityFields = getSubResource(entity);
 
 		String entityName = entity.getSimpleName();
-		String entitiesName = this.getEntitiesName(entityName);
 
 		String controllerName = entityName + "Ctrl";
 		String factoryName = entityName + "Factory";
@@ -222,25 +232,6 @@ public class AngularControllerStrategy extends AbstractUniqueFileGeneratorStrate
 		controller.append("});");
 
 		controller.append("};");
-
-		// @formatter:off
-		//single
-		String toto = ""
-//		+ "angularApp.controller('PlayerCtrl',['$scope','$rootScope' ,'PlayerFactory','$routeParams', PlayerCtrl]);"
-//		+ "function PlayerCtrl($scope,$rootScope, $PlayerFactory,$routeparams) {"
-//		+ "$rootScope.loading = true;"
-			
-//		+ "$PlayerFactory.get($routeparams.id,['comments','category']).then(function(entity) {"
-		+ "$scope.data=entity;"
-		+ "$rootScope.loading = false;"
-		+ "}, function() {"
-		+ "alert(msg);"
-		+ "$rootScope.loading = false;"
-		+ "});"
-		
-//		+ "};"
-		+"";
-		// @formatter:on	
 
 		return controller;
 	}
@@ -288,6 +279,11 @@ public class AngularControllerStrategy extends AbstractUniqueFileGeneratorStrate
 	 * @return the char sequence
 	 */
 	private CharSequence subResourceToLoad(List<Field> subEntityFields) {
+
+		return this.subResourceToLoad(subEntityFields, "'", "'");
+	}
+
+	private CharSequence subResourceToLoad(List<Field> subEntityFields, String before, String after) {
 		StringBuilder controller = new StringBuilder();
 		boolean first;
 		first = true;
@@ -297,7 +293,7 @@ public class AngularControllerStrategy extends AbstractUniqueFileGeneratorStrate
 			} else {
 				first = false;
 			}
-			controller.append("'").append(field.getSimpleName()).append("'");
+			controller.append(before).append(field.getSimpleName()).append(after);
 		}
 		return controller;
 	}
