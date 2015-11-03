@@ -43,6 +43,18 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ ","
 							
 				+ "get: function(id){"
+				
+				+ "var deferred = $q.defer();"
+				+ "var httpPromise = $http.get('rest/players/' +id);"
+				+ "SpringDataRestAdapter.process(httpPromise, subToLoad).then(function (processedResponse) {"
+				+ "var entity = processedResponse;"
+				+ "deferred.resolve(entity)"
+				+ "},function(response, status) {"
+				+ "var responseText = response != undefined ? response.statusText : 'no response';"
+				+ "deferred.reject('error on loading' + responseText);"
+				+ "});"
+				+ "return deferred.promise;"
+				
 				+ "}"
 				+ ","
 				
@@ -94,9 +106,10 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ "var entities = processedResponse._embeddedItems != undefined ? processedResponse._embeddedItems : [];"
 				+ "processedResponse.page.number++;"
 				+ "for (var i = 0, l=entities.length; i < l; i++) {"
+				+ "var entity=entities[i];"
 				
-				+ "if(entities[i].team != undefined && entities[i].team._embeddedItems != undefined) {"
-				+ "entities[i].team = entities[i].team._embeddedItems ;"
+				+ "if(entity.team != undefined && entity.team._embeddedItems != undefined) {"
+				+ "entity.team = entity.team._embeddedItems ;"
 				+ "}"
 				
 				+ "}"
@@ -110,6 +123,23 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ ","
 							
 				+ "get: function(id){"
+				
+				+ "var deferred = $q.defer();"
+				+ "var httpPromise = $http.get('rest/players/' +id);"
+				+ "SpringDataRestAdapter.process(httpPromise, subToLoad).then(function (processedResponse) {"
+				+ "var entity = processedResponse;"
+				
+				+ "if(entity.team != undefined && entity.team._embeddedItems != undefined) {"
+				+ "entity.team = entity.team._embeddedItems ;"
+				+ "}"
+				
+				+ "deferred.resolve(entity)"
+				+ "},function(response, status) {"
+				+ "var responseText = response != undefined ? response.statusText : 'no response';"
+				+ "deferred.reject('error on loading' + responseText);"
+				+ "});"
+				+ "return deferred.promise;"
+				
 				+ "}"
 				+ ","
 				
@@ -139,7 +169,7 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ "search+= criterias[i].field.id + criterias[i].operation.id + criterias[i].value.id + ','" 
 				+ "}"
 				
-				+ "url = 'rest/players/search/findByCriteria?page='+ (page -1) + '&size=' +limit;"
+				+ "url = 'rest/teams/search/findByCriteria?page='+ (page -1) + '&size=' +limit;"
 				+ "if(criterias.length > 0 ) {"
 				+ "url += '&search=' + search;"
 				+ "}"
@@ -159,6 +189,18 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ ","
 							
 				+ "get: function(id){"
+				
+				+ "var deferred = $q.defer();"
+				+ "var httpPromise = $http.get('rest/teams/' +id);"
+				+ "SpringDataRestAdapter.process(httpPromise, subToLoad).then(function (processedResponse) {"
+				+ "var entity = processedResponse;"
+				+ "deferred.resolve(entity)"
+				+ "},function(response, status) {"
+				+ "var responseText = response != undefined ? response.statusText : 'no response';"
+				+ "deferred.reject('error on loading' + responseText);"
+				+ "});"
+				+ "return deferred.promise;"
+				
 				+ "}"
 				+ ","
 				
@@ -205,9 +247,9 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ "var entities = processedResponse._embeddedItems != undefined ? processedResponse._embeddedItems : [];"
 				+ "processedResponse.page.number++;"
 				+ "for (var i = 0, l=entities.length; i < l; i++) {"
-				
-				+ "if(entities[i].team != undefined && entities[i].team._embeddedItems != undefined) {"
-				+ "entities[i].team = entities[i].team._embeddedItems ;"
+				+ "var entity=entities[i];"
+				+ "if(entity.team != undefined && entity.team._embeddedItems != undefined) {"
+				+ "entity.team = entity.team._embeddedItems ;"
 				+ "}"
 				
 				+ "}"
@@ -221,6 +263,23 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ ","
 							
 				+ "get: function(id){"
+				
+				+ "var deferred = $q.defer();"
+				+ "var httpPromise = $http.get('rest/players/' +id);"
+				+ "SpringDataRestAdapter.process(httpPromise, subToLoad).then(function (processedResponse) {"
+				+ "var entity = processedResponse;"
+				
+				+ "if(entity.team != undefined && entity.team._embeddedItems != undefined) {"
+				+ "entity.team = entity.team._embeddedItems ;"
+				+ "}"
+				
+				+ "deferred.resolve(entity)"
+				+ "},function(response, status) {"
+				+ "var responseText = response != undefined ? response.statusText : 'no response';"
+				+ "deferred.reject('error on loading' + responseText);"
+				+ "});"
+				+ "return deferred.promise;"
+				
 				+ "}"
 				+ ","
 				
@@ -250,7 +309,7 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ "search+= criterias[i].field.id + criterias[i].operation.id + criterias[i].value.id + ','" 
 				+ "}"
 				
-				+ "url = 'rest/players/search/findByCriteria?page='+ (page -1) + '&size=' +limit;"
+				+ "url = 'rest/teams/search/findByCriteria?page='+ (page -1) + '&size=' +limit;"
 				+ "if(criterias.length > 0 ) {"
 				+ "url += '&search=' + search;"
 				+ "}"
@@ -262,9 +321,9 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ "processedResponse.page.number++;"
 				
 				+ "for (var i = 0, l=entities.length; i < l; i++) {"
-				
-				+ "if(entities[i].players != undefined && entities[i].players._embeddedItems != undefined) {"
-				+ "entities[i].players = entities[i].players._embeddedItems ;"
+				+ "var entity=entities[i];"
+				+ "if(entity.players != undefined && entity.players._embeddedItems != undefined) {"
+				+ "entity.players = entity.players._embeddedItems ;"
 				+ "}"
 				
 				+ "}"
@@ -279,6 +338,22 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ ","
 							
 				+ "get: function(id){"
+				
+				+ "var deferred = $q.defer();"
+				+ "var httpPromise = $http.get('rest/teams/' +id);"
+				+ "SpringDataRestAdapter.process(httpPromise, subToLoad).then(function (processedResponse) {"
+				+ "var entity = processedResponse;"
+				
+				+ "if(entity.players != undefined && entity.players._embeddedItems != undefined) {"
+				+ "entity.players = entity.players._embeddedItems ;"
+				+ "}"
+				
+				+ "deferred.resolve(entity)"
+				+ "},function(response, status) {"
+				+ "var responseText = response != undefined ? response.statusText : 'no response';"
+				+ "deferred.reject('error on loading' + responseText);"
+				+ "});"
+				+ "return deferred.promise;"
 				+ "}"
 				+ ","
 				
