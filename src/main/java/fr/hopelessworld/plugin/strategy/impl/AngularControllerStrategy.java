@@ -126,7 +126,7 @@ public class AngularControllerStrategy extends AbstractUniqueFileGeneratorStrate
 
 		controller.append(
 				"$scope.criteriaOperation = [{id: ':', value:'='}, {id: '<', value:'<='}, {id: '>', value:'>='}];");
-		// TODO : subressource
+
 		controller.append("$scope.subResources = {");
 		controller.append(this.subResourceToLoad(subEntityFields, "", ":[]"));
 		controller.append("};");
