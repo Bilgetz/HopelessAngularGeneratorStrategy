@@ -22,6 +22,8 @@ public abstract class AbstractTestStrategy {
 
 	protected abstract AbstractUniqueFileGeneratorStrategy getStrategy();
 
+	protected abstract String getExpectedNoEntity();
+
 	protected abstract String getExpectedOneEntity();
 
 	protected abstract String getExpectedOneEntityWith2Field();
@@ -36,15 +38,7 @@ public abstract class AbstractTestStrategy {
 		CharSequence sequence = getStrategy().generate(entities);
 
 		Assert.assertNotNull("Sequence is null", sequence);
-		// @formatter:off
-		String expected = "var angularTemplate = {" 
-		+ AngularTemplateStrategy.PAGING_TEMPLATE 
-		+ ","
-		+ AngularTemplateStrategy.FILTERING_TEMPLATE 
-		+ "};";
-		// @formatter:on
-
-		Assert.assertEquals("Sequence bad generate", expected, sequence.toString());
+		Assert.assertEquals("Sequence bad generate", getExpectedNoEntity(), sequence.toString());
 	}
 
 	@Test

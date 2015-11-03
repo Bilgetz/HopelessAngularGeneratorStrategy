@@ -1,12 +1,5 @@
 package fr.hopelessworld.plugin.strategy.impl;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
-import org.junit.Assert;
-import org.junit.Test;
-
-import fr.hopelessworld.plugin.analyzer.AnalizedEntity;
 import fr.hopelessworld.plugin.strategy.AbstractUniqueFileGeneratorStrategy;
 
 public class AngularTemplateStrategyTest extends AbstractTestStrategy {
@@ -16,12 +9,8 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 		return new AngularTemplateStrategy();
 	}
 
-	@Test
-	public void testGenerateNoEntities() throws Exception {
-		Collection<AnalizedEntity> entities = new ArrayList<>();
-		CharSequence sequence = getStrategy().generate(entities);
-
-		Assert.assertNotNull("Sequence is null", sequence);
+	@Override
+	protected String getExpectedNoEntity() {
 		// @formatter:off
 		String expected = "var angularTemplate = {" 
 		+ AngularTemplateStrategy.PAGING_TEMPLATE 
@@ -29,8 +18,7 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 		+ AngularTemplateStrategy.FILTERING_TEMPLATE 
 		+ "};";
 		// @formatter:on
-
-		Assert.assertEquals("Sequence bad generate", expected, sequence.toString());
+		return expected;
 	}
 
 	@Override
