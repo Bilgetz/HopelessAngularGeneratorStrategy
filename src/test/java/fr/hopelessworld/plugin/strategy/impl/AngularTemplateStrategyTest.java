@@ -27,7 +27,15 @@ public class AngularTemplateStrategyTest {
 		CharSequence sequence = strategy.generate(entities);
 
 		Assert.assertNotNull("Sequence is null", sequence);
-		Assert.assertEquals("Sequence bad generate", "var angularTemplate = {};", sequence.toString());
+		// @formatter:off
+		String expected = "var angularTemplate = {" 
+		+ AngularTemplateStrategy.PAGING_TEMPLATE 
+		+ ","
+		+ AngularTemplateStrategy.FILTERING_TEMPLATE 
+		+ "};";
+		// @formatter:on
+
+		Assert.assertEquals("Sequence bad generate", expected, sequence.toString());
 	}
 
 	@Test
@@ -49,6 +57,11 @@ public class AngularTemplateStrategyTest {
 		Assert.assertNotNull("Sequence is null", sequence);
 		// @formatter:off
 		String expected = "var angularTemplate = {" 
+				+ AngularTemplateStrategy.PAGING_TEMPLATE 
+				+ ","
+				+ AngularTemplateStrategy.FILTERING_TEMPLATE 
+				+ ","
+				
 				+ "Player:'<h1>{{data.name}}</h1>" 
 				+ "{{!-- id not show --}}"
 				+ "{{'entity.Player.name' | translate }}:{{data.name}}<br />'"
@@ -108,6 +121,11 @@ public class AngularTemplateStrategyTest {
 		Assert.assertNotNull("Sequence is null", sequence);
 		// @formatter:off
 		String expected = "var angularTemplate = {" 
+				+ AngularTemplateStrategy.PAGING_TEMPLATE 
+				+ ","
+				+ AngularTemplateStrategy.FILTERING_TEMPLATE 
+				+ ","
+				
 				+ "Player:'<h1>{{data.name}}</h1>" 
 				+ "{{!-- id not show --}}"
 				+ "{{'entity.Player.name' | translate }}:{{data.name}}<br />"
@@ -182,6 +200,11 @@ public class AngularTemplateStrategyTest {
 		Assert.assertNotNull("Sequence is null", sequence);
 		// @formatter:off
 		String expected = "var angularTemplate = {" 
+				+ AngularTemplateStrategy.PAGING_TEMPLATE 
+				+ ","
+				+ AngularTemplateStrategy.FILTERING_TEMPLATE 
+				+ ","
+				
 				+ "Player:'<h1>{{data.name}}</h1>" 
 				+ "{{!-- id not show --}}"
 				+ "{{'entity.Player.name' | translate }}:{{data.name}}<br />"
@@ -254,7 +277,6 @@ public class AngularTemplateStrategyTest {
 				+"</div>"
 				+"</div>'"
 				
-				
 				+ "};";
 		// @formatter:on
 
@@ -293,6 +315,12 @@ public class AngularTemplateStrategyTest {
 		Assert.assertNotNull("Sequence is null", sequence);
 		// @formatter:off
 		String expected = "var angularTemplate = {" 
+				
+				+ AngularTemplateStrategy.PAGING_TEMPLATE 
+				+ ","
+				+ AngularTemplateStrategy.FILTERING_TEMPLATE 
+				+ ","
+				
 				+ "Player:'<h1>{{data.name}}</h1>" 
 				+ "{{!-- id not show --}}"
 				+ "{{'entity.Player.name' | translate }}:{{data.name}}<br />"

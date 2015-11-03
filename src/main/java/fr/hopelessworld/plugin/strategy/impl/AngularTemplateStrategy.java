@@ -23,7 +23,37 @@ import fr.hopelessworld.plugin.predicate.IdFieldPredicate;
 import fr.hopelessworld.plugin.predicate.SimpleNameFieldPredicate;
 import fr.hopelessworld.plugin.strategy.AbstractUniqueFileGeneratorStrategy;
 
-public class AngularTemplateStrategy extends AbstractUniqueFileGeneratorStrategy {
+public final class AngularTemplateStrategy extends AbstractUniqueFileGeneratorStrategy {
+
+	protected final static String PAGING_TEMPLATE = "PagingTemplate:'<div class=\"row\"><div class=\"col-md-5\">"
+			+ "<uib-pagination total-items=\"page.totalElements\" max-size=\"5\""
+			+ " class=\"pagination-sm\" items-per-page=\"page.size\""
+			+ " boundary-links=\"true\" rotate=\"false\" ng-change=\"pageChanged()\""
+			+ " ng-model=\"page.number\"></uib-pagination></div>" + "<div class=\"col-md-1\"><label>Size:</label>"
+			+ "<input type=\"number\" class=\"form-control\" ng-model=\"page.size\" ng-change=\"pageChanged()\">"
+			+ "</div></div>'";
+
+	protected final static String FILTERING_TEMPLATE = "FiletringTemplate:'<div><form ng-submit=\"addCriteria()\">"
+			+ "<select name=\"selectedField\" id=\"selectedField\" ng-model=\"selectedField\""
+			+ " ng-options=\"option.value for option in criteriaField\"></select>"
+			+ "<select ng-show=\"selectedField.type != undefined && selectedField.type.indexOf('number') != -1\""
+			+ " name=\"selectedOperation\" id=\"selectedOperation\" ng-model=\"selectedOperation\""
+			+ " ng-options=\"option.value for option in criteriaOperation\"></select>"
+			+ "<span ng-show=\"selectedField.type != undefined && selectedField.type.indexOf('text') != -1\">contains</span>"
+			+ "<span ng-show=\"selectedField.type != undefined && selectedField.type.indexOf('entity') != -1\">is</span>"
+			+ "<input ng-show=\"selectedField.type != undefined && selectedField.type.indexOf('entity') == -1\""
+			+ " type=\"text\" ng-model=\"selectedValue\">"
+			+ "<select ng-repeat=\"(resource, list) in subResources track by list\""
+			+ " ng-show=\"selectedField.type != undefined && selectedField.id=='{{resource}}'\""
+			+ " ng-options=\"option.name for option in list\" name=\"selectedEntity\" id=\"selected{{resource}}\""
+			+ " ng-model=\"$parent.selectedEntity\"></select>"
+			+ "<input ng-show=\"selectedField.type != undefined\" type=\"submit\" value=\"add\"></form>"
+			+ "<ul class=\"list-group row\">"
+			+ "<li ng-repeat=\"criteria in criterias\" class=\"list-group-item col-md-4\">" + "{{criteria.field.value}}"
+			+ "{{criteria.operation.value}}"
+			+ "{{criteria.value.value != undefined ? criteria.value.value : criteria.value.name != undefined ? criteria.value.name : ''}}"
+			+ "<button type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\" ng-click=\"supressCriteria($index)\">"
+			+ "<span aria-hidden=\"true\">&times;</span></button></li></ul></div>";
 
 	private final Predicate<Field> nameSimpleNamePredicate = new SimpleNameFieldPredicate("name");
 
@@ -37,21 +67,20 @@ public class AngularTemplateStrategy extends AbstractUniqueFileGeneratorStrategy
 	public CharSequence generate(Collection<AnalizedEntity> entities) {
 		StringBuilder templates = new StringBuilder();
 		templates.append("var angularTemplate = {");
-		boolean first = true;
+
+		templates.append(PAGING_TEMPLATE);
+		templates.append(",");
+		templates.append(FILTERING_TEMPLATE);
 
 		for (AnalizedEntity entity : entities) {
-			if (!first) {
-				templates.append(",");
-			} else {
-				first = false;
-			}
+			templates.append(",");
 			templates.append(this.getShowForEntity(entity));
 			templates.append(",");
 			templates.append(this.getEditForEntity(entity));
 			templates.append(",");
 			templates.append(this.getListForEntity(entity));
-
 		}
+
 		templates.append("};");
 		return templates;
 	}
