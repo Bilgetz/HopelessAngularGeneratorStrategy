@@ -42,12 +42,12 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 						+ "alert(msg);"
 						+ "$rootScope.loading = false;"
 					+ "});"
-				+ "}"
+				+ "};"
 				
 				+ "$scope.supressCriteria = function(index) {"
 					+ "$scope.criterias.splice(index, 1);"
 					+ "$scope.pageChanged();"
-				+ "}"
+				+ "};"
 				
 				+ "$scope.addCriteria = function() {"
 					+ "if($scope.selectedField.type == 'number') {"
@@ -61,7 +61,7 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "$scope.selectedOperation= {};"
 				+ "$scope.selectedValue = '';"
 				+ "$scope.pageChanged();"
-				+ "}"
+				+ "};"
 			
 			
 				+ "$scope.pageChanged();"
@@ -114,12 +114,12 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 						+ "alert(msg);"
 						+ "$rootScope.loading = false;"
 					+ "});"
-				+ "}"
+				+ "};"
 				
 				+ "$scope.supressCriteria = function(index) {"
 					+ "$scope.criterias.splice(index, 1);"
 					+ "$scope.pageChanged();"
-				+ "}"
+				+ "};"
 				
 				+ "$scope.addCriteria = function() {"
 					+ "if($scope.selectedField.type == 'number') {"
@@ -133,7 +133,7 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "$scope.selectedOperation= {};"
 				+ "$scope.selectedValue = '';"
 				+ "$scope.pageChanged();"
-				+ "}"
+				+ "};"
 			
 			
 				+ "$scope.pageChanged();"
@@ -192,12 +192,12 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 						+ "alert(msg);"
 						+ "$rootScope.loading = false;"
 					+ "});"
-				+ "}"
+				+ "};"
 				
 				+ "$scope.supressCriteria = function(index) {"
 					+ "$scope.criterias.splice(index, 1);"
 					+ "$scope.pageChanged();"
-				+ "}"
+				+ "};"
 				
 				+ "$scope.addCriteria = function() {"
 					+ "if($scope.selectedField.type == 'number') {"
@@ -211,7 +211,7 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "$scope.selectedOperation= {};"
 				+ "$scope.selectedValue = '';"
 				+ "$scope.pageChanged();"
-				+ "}"
+				+ "};"
 			
 			
 				+ "$scope.pageChanged();"
@@ -256,12 +256,12 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "alert(msg);"
 				+ "$rootScope.loading = false;"
 				+ "});"
-				+ "}"
+				+ "};"
 				
 				+ "$scope.supressCriteria = function(index) {"
 				+ "$scope.criterias.splice(index, 1);"
 				+ "$scope.pageChanged();"
-				+ "}"
+				+ "};"
 				
 				+ "$scope.addCriteria = function() {"
 				+ "if($scope.selectedField.type == 'number') {"
@@ -275,7 +275,7 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "$scope.selectedOperation= {};"
 				+ "$scope.selectedValue = '';"
 				+ "$scope.pageChanged();"
-				+ "}"
+				+ "};"
 				
 				+ "$scope.pageChanged();"
 				
@@ -336,12 +336,12 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 						+ "alert(msg);"
 						+ "$rootScope.loading = false;"
 					+ "});"
-				+ "}"
+				+ "};"
 				
 				+ "$scope.supressCriteria = function(index) {"
 					+ "$scope.criterias.splice(index, 1);"
 					+ "$scope.pageChanged();"
-				+ "}"
+				+ "};"
 				
 				+ "$scope.addCriteria = function() {"
 					+ "if($scope.selectedField.type == 'number') {"
@@ -355,7 +355,7 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "$scope.selectedOperation= {};"
 				+ "$scope.selectedValue = '';"
 				+ "$scope.pageChanged();"
-				+ "}"
+				+ "};"
 			
 			
 				+ "$scope.pageChanged();"
@@ -407,12 +407,12 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "alert(msg);"
 				+ "$rootScope.loading = false;"
 				+ "});"
-				+ "}"
+				+ "};"
 				
 				+ "$scope.supressCriteria = function(index) {"
 				+ "$scope.criterias.splice(index, 1);"
 				+ "$scope.pageChanged();"
-				+ "}"
+				+ "};"
 				
 				+ "$scope.addCriteria = function() {"
 				+ "if($scope.selectedField.type == 'number') {"
@@ -426,7 +426,7 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "$scope.selectedOperation= {};"
 				+ "$scope.selectedValue = '';"
 				+ "$scope.pageChanged();"
-				+ "}"
+				+ "};"
 				
 				+ "$scope.pageChanged();"
 				

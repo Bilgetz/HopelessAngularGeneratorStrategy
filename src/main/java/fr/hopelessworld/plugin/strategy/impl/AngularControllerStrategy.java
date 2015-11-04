@@ -156,13 +156,13 @@ public class AngularControllerStrategy extends AbstractUniqueFileGeneratorStrate
 		controller.append("alert(msg);");
 		controller.append("$rootScope.loading = false;");
 		controller.append("});");
-		controller.append("}");
+		controller.append("};");
 
 		// supressCriteria function in scope
 		controller.append("$scope.supressCriteria = function(index) {");
 		controller.append("$scope.criterias.splice(index, 1);");
 		controller.append("$scope.pageChanged();");
-		controller.append("}");
+		controller.append("};");
 
 		// addCriteria function in scope
 
@@ -181,7 +181,7 @@ public class AngularControllerStrategy extends AbstractUniqueFileGeneratorStrate
 		controller.append("$scope.selectedOperation= {};");
 		controller.append("$scope.selectedValue = '';");
 		controller.append("$scope.pageChanged();");
-		controller.append("}");
+		controller.append("};");
 
 		// call to pageChanged();"
 		controller.append("$scope.pageChanged();");
