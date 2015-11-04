@@ -53,7 +53,7 @@ public final class AngularTemplateStrategy extends AbstractUniqueFileGeneratorSt
 			+ "{{criteria.operation.value}}"
 			+ "{{criteria.value.value != undefined ? criteria.value.value : criteria.value.name != undefined ? criteria.value.name : \\'\\'}}"
 			+ "<button type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\" ng-click=\"supressCriteria($index)\">"
-			+ "<span aria-hidden=\"true\">&times;</span></button></li></ul></div>";
+			+ "<span aria-hidden=\"true\">&times;</span></button></li></ul></div>'";
 
 	private final Predicate<Field> nameSimpleNamePredicate = new SimpleNameFieldPredicate("name");
 
