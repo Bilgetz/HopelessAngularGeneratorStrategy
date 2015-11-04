@@ -45,7 +45,7 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ "return deferred.promise;}"
 				+ ","
 							
-				+ "get: function(id){"
+				+ "get: function(id,subToLoad){"
 				
 				+ "var deferred = $q.defer();"
 				+ "var httpPromise = $http.get('rest/players/' +id);"
@@ -129,7 +129,7 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ "return deferred.promise;}"
 				+ ","
 							
-				+ "get: function(id){"
+				+ "get: function(id,subToLoad){"
 				
 				+ "var deferred = $q.defer();"
 				+ "var httpPromise = $http.get('rest/players/' +id);"
@@ -199,7 +199,7 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ "return deferred.promise;}"
 				+ ","
 							
-				+ "get: function(id){"
+				+ "get: function(id,subToLoad){"
 				
 				+ "var deferred = $q.defer();"
 				+ "var httpPromise = $http.get('rest/teams/' +id);"
@@ -277,7 +277,7 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ "return deferred.promise;}"
 				+ ","
 							
-				+ "get: function(id){"
+				+ "get: function(id,subToLoad){"
 				
 				+ "var deferred = $q.defer();"
 				+ "var httpPromise = $http.get('rest/players/' +id);"
@@ -356,7 +356,7 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ "return deferred.promise;}"
 				+ ","
 							
-				+ "get: function(id){"
+				+ "get: function(id,subToLoad){"
 				
 				+ "var deferred = $q.defer();"
 				+ "var httpPromise = $http.get('rest/teams/' +id);"

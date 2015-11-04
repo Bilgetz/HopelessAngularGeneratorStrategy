@@ -104,7 +104,7 @@ public class AngularFactoryStrategy extends AbstractUniqueFileGeneratorStrategy 
 		String entityName = entity.getSimpleName();
 		String entitiesName = AnalizedEntityUtils.getEntitiesName(entityName).toLowerCase();
 
-		method.append("get: function(id){");
+		method.append("get: function(id,subToLoad){");
 
 		method.append("var deferred = $q.defer();");
 		method.append("var httpPromise = $http.get('rest/").append(entitiesName).append("/' +id);");
