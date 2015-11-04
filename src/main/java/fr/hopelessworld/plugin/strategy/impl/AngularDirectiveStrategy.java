@@ -19,7 +19,7 @@ public final class AngularDirectiveStrategy extends AbstractUniqueFileGeneratorS
 			+"angularApp.directive('ngFiltering', function() {"
 			+"return {"
 			+"restrict:'E',"
-			+"templateUrl: 'directives/filtering.html',"
+			+"template: angularTemplate.FiletringTemplate,"
 			+"scope : {criteriaField :'=',subResources :'=',criterias :'=',criteriaChanged : '&'},"
 			+"controller : function($scope) {"
 			+"$scope.selectedField={};"

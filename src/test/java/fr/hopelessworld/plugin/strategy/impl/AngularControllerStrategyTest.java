@@ -176,7 +176,7 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "$scope.criteriaOperation = [{id: ':', value:'='}, {id: '<', value:'<='}, {id: '>', value:'>='}];"
 				+ "$scope.subResources = {team:[]};"
 				
-				+ "$TeamFactory.find().then(function(result) {"
+				+ "$TeamFactory.find(1,99,[],[]).then(function(result) {"
 				+ "$scope.subResources.team = result.entities;"
 				+ "}, function(msg) {"
 				+ "alert(msg);"
@@ -320,7 +320,7 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "$scope.criteriaOperation = [{id: ':', value:'='}, {id: '<', value:'<='}, {id: '>', value:'>='}];"
 				+ "$scope.subResources = {team:[]};"
 				
-				+ "$TeamFactory.find().then(function(result) {"
+				+ "$TeamFactory.find(1,99,[],[]).then(function(result) {"
 				+ "$scope.subResources.team = result.entities;"
 				+ "}, function(msg) {"
 				+ "alert(msg);"
@@ -391,7 +391,7 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "$scope.criteriaOperation = [{id: ':', value:'='}, {id: '<', value:'<='}, {id: '>', value:'>='}];"
 				+ "$scope.subResources = {players:[]};"
 				
-				+ "$PlayerFactory.find().then(function(result) {"
+				+ "$PlayerFactory.find(1,99,[],[]).then(function(result) {"
 				+ "$scope.subResources.players = result.entities;"
 				+ "}, function(msg) {"
 				+ "alert(msg);"

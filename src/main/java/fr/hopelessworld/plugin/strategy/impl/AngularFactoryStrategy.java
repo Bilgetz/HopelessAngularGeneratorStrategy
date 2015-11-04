@@ -87,13 +87,13 @@ public class AngularFactoryStrategy extends AbstractUniqueFileGeneratorStrategy 
 		}
 
 		method.append("deferred.resolve({");
-		method.append("entities :processedResponse._embeddedItems,");
+		method.append("entities :entities,");
 		method.append("page : processedResponse.page");
 		method.append("});");
 
 		method.append("});");
 
-		method.append("}");
+		method.append("return deferred.promise;}");
 
 		return method;
 	}

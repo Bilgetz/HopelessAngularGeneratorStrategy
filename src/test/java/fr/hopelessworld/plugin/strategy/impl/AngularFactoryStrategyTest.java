@@ -35,14 +35,14 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ "processedResponse.page.number++;"
 				
 				+ "deferred.resolve({"
-				+ "entities :processedResponse._embeddedItems,"
+				+ "entities :entities,"
 				+ "page : processedResponse.page"
 				//resole end
 				+ "});" 
 				//function end
 				+ "});"
-				
-				+ "}"
+				//find end 
+				+ "return deferred.promise;}"
 				+ ","
 							
 				+ "get: function(id){"
@@ -118,14 +118,15 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ "}"
 				
 				+ "deferred.resolve({"
-				+ "entities :processedResponse._embeddedItems,"
+				+ "entities :entities,"
 				+ "page : processedResponse.page"
 				//resole end
 				+ "});" 
 				//function end
 				+ "});"
 				
-				+ "}"
+				//find end 
+				+ "return deferred.promise;}"
 				+ ","
 							
 				+ "get: function(id){"
@@ -187,14 +188,15 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ "processedResponse.page.number++;"
 				
 				+ "deferred.resolve({"
-				+ "entities :processedResponse._embeddedItems,"
+				+ "entities :entities,"
 				+ "page : processedResponse.page"
 				//resole end
 				+ "});" 
 				//function end
 				+ "});"
 				
-				+ "}"
+				//find end 
+				+ "return deferred.promise;}"
 				+ ","
 							
 				+ "get: function(id){"
@@ -264,14 +266,15 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ "}"
 				
 				+ "deferred.resolve({"
-				+ "entities :processedResponse._embeddedItems,"
+				+ "entities :entities,"
 				+ "page : processedResponse.page"
 				//resole end
 				+ "});" 
 				//function end
 				+ "});"
 				
-				+ "}"
+				//find end 
+				+ "return deferred.promise;}"
 				+ ","
 							
 				+ "get: function(id){"
@@ -342,14 +345,15 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				
 				
 				+ "deferred.resolve({"
-				+ "entities :processedResponse._embeddedItems,"
+				+ "entities :entities,"
 				+ "page : processedResponse.page"
 				//resole end
 				+ "});" 
 				//function end
 				+ "});"
 				
-				+ "}"
+				//find end 
+				+ "return deferred.promise;}"
 				+ ","
 							
 				+ "get: function(id){"

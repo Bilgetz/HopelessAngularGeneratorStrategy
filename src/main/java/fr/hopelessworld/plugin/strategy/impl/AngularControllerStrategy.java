@@ -132,7 +132,7 @@ public class AngularControllerStrategy extends AbstractUniqueFileGeneratorStrate
 
 		for (Field field : subEntityFields) {
 			controller.append("$").append(field.asAnalyzedEntity().getSimpleName())
-					.append("Factory.find().then(function(result) {");
+					.append("Factory.find(1,99,[],[]).then(function(result) {");
 			controller.append("$scope.subResources.").append(field.getSimpleName()).append(" = result.entities;");
 			controller.append("}, function(msg) {");
 			controller.append("alert(msg);");
