@@ -37,6 +37,9 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ "deferred.resolve({"
 				+ "entities :processedResponse._embeddedItems,"
 				+ "page : processedResponse.page"
+				//resole end
+				+ "});" 
+				//function end
 				+ "});"
 				
 				+ "}"
@@ -117,6 +120,9 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ "deferred.resolve({"
 				+ "entities :processedResponse._embeddedItems,"
 				+ "page : processedResponse.page"
+				//resole end
+				+ "});" 
+				//function end
 				+ "});"
 				
 				+ "}"
@@ -183,6 +189,9 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ "deferred.resolve({"
 				+ "entities :processedResponse._embeddedItems,"
 				+ "page : processedResponse.page"
+				//resole end
+				+ "});" 
+				//function end
 				+ "});"
 				
 				+ "}"
@@ -257,6 +266,9 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ "deferred.resolve({"
 				+ "entities :processedResponse._embeddedItems,"
 				+ "page : processedResponse.page"
+				//resole end
+				+ "});" 
+				//function end
 				+ "});"
 				
 				+ "}"
@@ -332,6 +344,9 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ "deferred.resolve({"
 				+ "entities :processedResponse._embeddedItems,"
 				+ "page : processedResponse.page"
+				//resole end
+				+ "});" 
+				//function end
 				+ "});"
 				
 				+ "}"

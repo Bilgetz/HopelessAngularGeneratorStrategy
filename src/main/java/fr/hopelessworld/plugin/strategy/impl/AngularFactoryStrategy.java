@@ -91,6 +91,8 @@ public class AngularFactoryStrategy extends AbstractUniqueFileGeneratorStrategy 
 		method.append("page : processedResponse.page");
 		method.append("});");
 
+		method.append("});");
+
 		method.append("}");
 
 		return method;
