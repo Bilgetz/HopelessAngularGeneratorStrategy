@@ -39,11 +39,13 @@ public final class AngularDirectiveStrategy extends AbstractUniqueFileGeneratorS
 			+"$scope.selectedOperation={};"
 			+"$scope.selectedValue='';"
 			+"$scope.criteriaChanged();"
-			+"}"
+			+"};"
+			
 			+"$scope.supressCriteria = function(index) {"
 			+"$scope.criterias.splice(index, 1);"
 			+"$scope.criteriaChanged();"
-			+"}"
+			+"};"
+			
 			+"}"
 			+"}"
 			+"});";
