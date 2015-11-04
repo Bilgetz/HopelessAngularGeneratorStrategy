@@ -14,6 +14,7 @@ import org.apache.commons.lang3.StringUtils;
 import fr.hopelessworld.plugin.analyzer.AnalizedEntity;
 import fr.hopelessworld.plugin.analyzer.Field;
 import fr.hopelessworld.plugin.strategy.AbstractUniqueFileGeneratorStrategy;
+import fr.hopelessworld.plugin.utils.AnalizedEntityUtils;
 
 public class AngularFactoryStrategy extends AbstractUniqueFileGeneratorStrategy {
 
@@ -52,7 +53,7 @@ public class AngularFactoryStrategy extends AbstractUniqueFileGeneratorStrategy 
 		StringBuilder method = new StringBuilder();
 
 		String entityName = entity.getSimpleName();
-		String entitiesName = getEntitiesName(entityName).toLowerCase();
+		String entitiesName = AnalizedEntityUtils.getEntitiesName(entityName).toLowerCase();
 
 		method.append("find:function(page, limit, criterias,subToLoad){");
 
@@ -99,7 +100,7 @@ public class AngularFactoryStrategy extends AbstractUniqueFileGeneratorStrategy 
 		StringBuilder method = new StringBuilder();
 
 		String entityName = entity.getSimpleName();
-		String entitiesName = getEntitiesName(entityName).toLowerCase();
+		String entitiesName = AnalizedEntityUtils.getEntitiesName(entityName).toLowerCase();
 
 		method.append("get: function(id){");
 
@@ -179,23 +180,6 @@ public class AngularFactoryStrategy extends AbstractUniqueFileGeneratorStrategy 
 			method.append("}");
 		}
 		return method;
-	}
-
-	/**
-	 * Gets the entities name.
-	 *
-	 * @param entityName
-	 *            the entity name
-	 * @return the entities name
-	 */
-	private String getEntitiesName(String entityName) {
-		String entitiesName;
-		if (StringUtils.endsWith(entityName, "y")) {
-			entitiesName = StringUtils.removeEnd(entityName, "y") + "ies";
-		} else {
-			entitiesName = entityName + "s";
-		}
-		return entitiesName;
 	}
 
 }

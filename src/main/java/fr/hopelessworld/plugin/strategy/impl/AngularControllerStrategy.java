@@ -14,11 +14,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import org.apache.commons.lang3.StringUtils;
-
 import fr.hopelessworld.plugin.analyzer.AnalizedEntity;
 import fr.hopelessworld.plugin.analyzer.Field;
 import fr.hopelessworld.plugin.strategy.AbstractUniqueFileGeneratorStrategy;
+import fr.hopelessworld.plugin.utils.AnalizedEntityUtils;
 
 public class AngularControllerStrategy extends AbstractUniqueFileGeneratorStrategy {
 
@@ -40,7 +39,7 @@ public class AngularControllerStrategy extends AbstractUniqueFileGeneratorStrate
 		StringBuilder controller = new StringBuilder();
 		boolean first = true;
 		String entityName = entity.getSimpleName();
-		String entitiesName = this.getEntitiesName(entityName);
+		String entitiesName = AnalizedEntityUtils.getEntitiesName(entityName);
 
 		List<Field> subEntityFields = getSubResource(entity);
 
@@ -234,23 +233,6 @@ public class AngularControllerStrategy extends AbstractUniqueFileGeneratorStrate
 		controller.append("};");
 
 		return controller;
-	}
-
-	/**
-	 * Gets the entities name.
-	 *
-	 * @param entityName
-	 *            the entity name
-	 * @return the entities name
-	 */
-	private String getEntitiesName(String entityName) {
-		String entitiesName;
-		if (StringUtils.endsWith(entityName, "y")) {
-			entitiesName = StringUtils.removeEnd(entityName, "y") + "ies";
-		} else {
-			entitiesName = entityName + "s";
-		}
-		return entitiesName;
 	}
 
 	/**

@@ -3,10 +3,10 @@ package fr.hopelessworld.plugin.strategy.impl;
 import java.util.Collection;
 
 import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
 
 import fr.hopelessworld.plugin.analyzer.AnalizedEntity;
 import fr.hopelessworld.plugin.strategy.AbstractUniqueFileGeneratorStrategy;
+import fr.hopelessworld.plugin.utils.AnalizedEntityUtils;
 
 public class AngularRouteStrategy extends AbstractUniqueFileGeneratorStrategy {
 
@@ -19,7 +19,7 @@ public class AngularRouteStrategy extends AbstractUniqueFileGeneratorStrategy {
 			routes.append("$routeProvider");
 			for (AnalizedEntity entity : entities) {
 				String entityName = entity.getSimpleName();
-				String entitiesName = this.getEntitiesName(entityName);
+				String entitiesName = AnalizedEntityUtils.getEntitiesName(entityName);
 
 				routes.append(".when('/").append(entitiesName.toLowerCase()).append("',{template: angularTemplate.")
 						.append(entityName).append("List,controller: '").append(entitiesName).append("Ctrl'})");
@@ -32,23 +32,6 @@ public class AngularRouteStrategy extends AbstractUniqueFileGeneratorStrategy {
 
 		routes.append("};");
 		return routes;
-	}
-
-	/**
-	 * Gets the entities name.
-	 *
-	 * @param entityName
-	 *            the entity name
-	 * @return the entities name
-	 */
-	private String getEntitiesName(String entityName) {
-		String entitiesName;
-		if (StringUtils.endsWith(entityName, "y")) {
-			entitiesName = StringUtils.removeEnd(entityName, "y") + "ies";
-		} else {
-			entitiesName = entityName + "s";
-		}
-		return entitiesName;
 	}
 
 }

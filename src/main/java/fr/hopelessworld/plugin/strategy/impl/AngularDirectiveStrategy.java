@@ -2,10 +2,9 @@ package fr.hopelessworld.plugin.strategy.impl;
 
 import java.util.Collection;
 
-import org.apache.commons.lang3.StringUtils;
-
 import fr.hopelessworld.plugin.analyzer.AnalizedEntity;
 import fr.hopelessworld.plugin.strategy.AbstractUniqueFileGeneratorStrategy;
+import fr.hopelessworld.plugin.utils.AnalizedEntityUtils;
 
 public final class AngularDirectiveStrategy extends AbstractUniqueFileGeneratorStrategy {
 	// @formatter:off
@@ -98,12 +97,7 @@ public final class AngularDirectiveStrategy extends AbstractUniqueFileGeneratorS
 	private Object getListForEntity(AnalizedEntity entity) {
 		StringBuilder directive = new StringBuilder();
 		String entityName = entity.getSimpleName();
-		String entitiesName;
-		if (StringUtils.endsWith(entityName, "y")) {
-			entitiesName = StringUtils.removeEnd(entityName, "y") + "ies";
-		} else {
-			entitiesName = entityName + "s";
-		}
+		String entitiesName = AnalizedEntityUtils.getEntitiesName(entityName);
 
 		directive.append("angularApp.directive('ng").append(entitiesName).append("', function() {");
 		directive.append("return {");
