@@ -11,7 +11,7 @@ buildscript {
  ...
     dependencies {
         classpath("fr.hopelessworld.plugin:EntityAnalyzerPlugin:0.2")
-        classpath("fr.hopelessworld.plugin:EmberGeneratorStrategy:1.0")
+        classpath("fr.hopelessworld.plugin:HopelessAngularGeneratorStrategy:0.1")
    }
 }
 
