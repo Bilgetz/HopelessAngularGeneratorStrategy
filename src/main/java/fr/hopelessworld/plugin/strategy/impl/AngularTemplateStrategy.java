@@ -22,6 +22,7 @@ import fr.hopelessworld.plugin.analyzer.Field;
 import fr.hopelessworld.plugin.predicate.IdFieldPredicate;
 import fr.hopelessworld.plugin.predicate.SimpleNameFieldPredicate;
 import fr.hopelessworld.plugin.strategy.AbstractUniqueFileGeneratorStrategy;
+import fr.hopelessworld.plugin.utils.AnalizedEntityUtils;
 
 public final class AngularTemplateStrategy extends AbstractUniqueFileGeneratorStrategy {
 
@@ -104,7 +105,7 @@ public final class AngularTemplateStrategy extends AbstractUniqueFileGeneratorSt
 		for (Field field : entity.getFields()) {
 
 			if (field.getAnnotation(Id.class) != null) {
-				output.append("{{!-- id not show --}}");
+				output.append("<!-- id not show -->");
 			} else {
 				output.append("{{\\'entity.").append(entityName).append(".").append(field.getSimpleName())
 						.append("\\' | translate }}:");
@@ -166,7 +167,7 @@ public final class AngularTemplateStrategy extends AbstractUniqueFileGeneratorSt
 		for (Field field : entity.getFields()) {
 
 			if (field.getAnnotation(Id.class) != null) {
-				output.append("{{!-- id not show --}}");
+				output.append("<!-- id not show -->");
 			} else {
 				CharSequence fieldName = field.getSimpleName();
 
@@ -179,11 +180,11 @@ public final class AngularTemplateStrategy extends AbstractUniqueFileGeneratorSt
 
 				if (field.getAnnotation(ManyToOne.class) != null || field.getAnnotation(OneToOne.class) != null) {
 					/** c'est 1 entité */
-					output.append("{{!-- TODO --}}");
+					output.append("<!-- TODO -->");
 				} else if (field.getAnnotation(OneToMany.class) != null
 						|| field.getAnnotation(ManyToMany.class) != null) {
 					/* une liste */
-					output.append("{{!-- TODO --}}");
+					output.append("<!-- TODO -->");
 				} else if (field.getAnnotation(Column.class) != null) {
 					/* un champ basic */
 					TypeMirror typeMirror = field.asType();
@@ -211,7 +212,7 @@ public final class AngularTemplateStrategy extends AbstractUniqueFileGeneratorSt
 								.append("\" ng-model=\"data.").append(fieldName).append("\" class=\"form-control\">");
 					} else {
 						// autre type (inconu)
-						output.append("{{!-- unknow type --}}");
+						output.append("<!-- unknow type -->");
 					}
 
 				}
@@ -267,7 +268,7 @@ public final class AngularTemplateStrategy extends AbstractUniqueFileGeneratorSt
 	 * @return the url for entity
 	 */
 	private String getUrlForEntity(String name, AnalizedEntity fieldEntity) {
-		String nameOfFieldEntity = fieldEntity.getSimpleName().toLowerCase();
+		String nameOfFieldEntity = AnalizedEntityUtils.getEntitiesName(fieldEntity.getSimpleName()).toLowerCase();
 		Field idField = CollectionUtils.find(fieldEntity.getFields(), this.idFieldPredicate);
 		return StringUtils.join("#/", nameOfFieldEntity, "/{{", name, ".", idField.getSimpleName(), "}}");
 	}
