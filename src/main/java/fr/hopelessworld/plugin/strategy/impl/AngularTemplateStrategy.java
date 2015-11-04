@@ -36,22 +36,22 @@ public final class AngularTemplateStrategy extends AbstractUniqueFileGeneratorSt
 	protected final static String FILTERING_TEMPLATE = "FiletringTemplate:'<div><form ng-submit=\"addCriteria()\">"
 			+ "<select name=\"selectedField\" id=\"selectedField\" ng-model=\"selectedField\""
 			+ " ng-options=\"option.value for option in criteriaField\"></select>"
-			+ "<select ng-show=\"selectedField.type != undefined && selectedField.type.indexOf('number') != -1\""
+			+ "<select ng-show=\"selectedField.type != undefined && selectedField.type.indexOf(\\'number\\') != -1\""
 			+ " name=\"selectedOperation\" id=\"selectedOperation\" ng-model=\"selectedOperation\""
 			+ " ng-options=\"option.value for option in criteriaOperation\"></select>"
-			+ "<span ng-show=\"selectedField.type != undefined && selectedField.type.indexOf('text') != -1\">contains</span>"
-			+ "<span ng-show=\"selectedField.type != undefined && selectedField.type.indexOf('entity') != -1\">is</span>"
-			+ "<input ng-show=\"selectedField.type != undefined && selectedField.type.indexOf('entity') == -1\""
+			+ "<span ng-show=\"selectedField.type != undefined && selectedField.type.indexOf(\\'text\\') != -1\">contains</span>"
+			+ "<span ng-show=\"selectedField.type != undefined && selectedField.type.indexOf(\\'entity\\') != -1\">is</span>"
+			+ "<input ng-show=\"selectedField.type != undefined && selectedField.type.indexOf(\\'entity\\') == -1\""
 			+ " type=\"text\" ng-model=\"selectedValue\">"
 			+ "<select ng-repeat=\"(resource, list) in subResources track by list\""
-			+ " ng-show=\"selectedField.type != undefined && selectedField.id=='{{resource}}'\""
+			+ " ng-show=\"selectedField.type != undefined && selectedField.id==\\'{{resource}}\\'\""
 			+ " ng-options=\"option.name for option in list\" name=\"selectedEntity\" id=\"selected{{resource}}\""
 			+ " ng-model=\"$parent.selectedEntity\"></select>"
 			+ "<input ng-show=\"selectedField.type != undefined\" type=\"submit\" value=\"add\"></form>"
 			+ "<ul class=\"list-group row\">"
 			+ "<li ng-repeat=\"criteria in criterias\" class=\"list-group-item col-md-4\">" + "{{criteria.field.value}}"
 			+ "{{criteria.operation.value}}"
-			+ "{{criteria.value.value != undefined ? criteria.value.value : criteria.value.name != undefined ? criteria.value.name : ''}}"
+			+ "{{criteria.value.value != undefined ? criteria.value.value : criteria.value.name != undefined ? criteria.value.name : \\'\\'}}"
 			+ "<button type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\" ng-click=\"supressCriteria($index)\">"
 			+ "<span aria-hidden=\"true\">&times;</span></button></li></ul></div>";
 
@@ -106,8 +106,8 @@ public final class AngularTemplateStrategy extends AbstractUniqueFileGeneratorSt
 			if (field.getAnnotation(Id.class) != null) {
 				output.append("{{!-- id not show --}}");
 			} else {
-				output.append("{{'entity.").append(entityName).append(".").append(field.getSimpleName())
-						.append("' | translate }}:");
+				output.append("{{\\'entity.").append(entityName).append(".").append(field.getSimpleName())
+						.append("\\' | translate }}:");
 				if (field.getAnnotation(ManyToOne.class) != null || field.getAnnotation(OneToOne.class) != null) {
 					/** c'est 1 entité */
 					AnalizedEntity fieldEntity = field.asAnalyzedEntity();
@@ -140,7 +140,7 @@ public final class AngularTemplateStrategy extends AbstractUniqueFileGeneratorSt
 					/* un champ basic */
 					output.append("{{data.").append(field.getSimpleName());
 					if (Date.class.getCanonicalName().equals(field.asType().toString())) {
-						output.append(" | date:'medium'");
+						output.append(" | date:\\'medium\\'");
 					}
 					output.append("}}");
 				}
@@ -170,8 +170,8 @@ public final class AngularTemplateStrategy extends AbstractUniqueFileGeneratorSt
 			} else {
 				CharSequence fieldName = field.getSimpleName();
 
-				output.append("<div ng-class=\"{'has-error': error != undefined && error.indexOf('").append(fieldName)
-						.append("') != -1}\" class=\"input-group\">");
+				output.append("<div ng-class=\"{\\'has-error\\': error != undefined && error.indexOf(\\'")
+						.append(fieldName).append("\\') != -1}\" class=\"input-group\">");
 
 				output.append("<span class=\"input-group-addon\">").append(fieldName).append("</span>");
 				// <input type="text" placeholder="name" ng-model="data.name"
