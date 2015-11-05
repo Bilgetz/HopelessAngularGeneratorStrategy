@@ -88,6 +88,8 @@ public final class AngularDirectiveStrategy extends AbstractUniqueFileGeneratorS
 		directive.append("scope : {");
 		directive.append("data :'=',");
 		directive.append("save : '&',");
+		directive.append("reset : '&',");
+		directive.append("cancel : '&',");
 		directive.append("error: '='");
 		directive.append("}");
 		directive.append("}");
