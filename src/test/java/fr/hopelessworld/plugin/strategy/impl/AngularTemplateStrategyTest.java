@@ -37,7 +37,7 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				+ "<a href=\"#/players\">Players</a>"
 				+"</div>"
 				+"<div ng-show=\"onedit\">"
-				+ "<ng-player-edit data=\"editData\"  save=\"save()\" reset=\"reset()\"></ng-player-edit>"
+				+ "<ng-player-edit data=\"editData\"  save=\"save()\" reset=\"reset()\" cancel=\"cancel()\"></ng-player-edit>"
 				+"</div>"
 				+ "'"
 				
@@ -94,7 +94,7 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				+ "<a href=\"#/players\">Players</a>"
 				+"</div>"
 				+"<div ng-show=\"onedit\">"
-				+ "<ng-player-edit data=\"editData\"  save=\"save()\" reset=\"reset()\"></ng-player-edit>"
+				+ "<ng-player-edit data=\"editData\"  save=\"save()\" reset=\"reset()\" cancel=\"cancel()\"></ng-player-edit>"
 				+"</div>"
 				+ "'"
 				+ ","
@@ -154,7 +154,7 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				+ "<a href=\"#/players\">Players</a>"
 				+"</div>"
 				+"<div ng-show=\"onedit\">"
-				+ "<ng-player-edit data=\"editData\"  save=\"save()\" reset=\"reset()\"></ng-player-edit>"
+				+ "<ng-player-edit data=\"editData\"  save=\"save()\" reset=\"reset()\" cancel=\"cancel()\"></ng-player-edit>"
 				+"</div>"
 				+ "'"
 				
@@ -202,7 +202,7 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				+ "<a href=\"#/teams\">Teams</a>"
 				+"</div>"
 				+"<div ng-show=\"onedit\">"
-				+ "<ng-team-edit data=\"editData\"  save=\"save()\" reset=\"reset()\"></ng-team-edit>"
+				+ "<ng-team-edit data=\"editData\"  save=\"save()\" reset=\"reset()\" cancel=\"cancel()\"></ng-team-edit>"
 				+"</div>"
 				+ "'"
 				
@@ -260,7 +260,7 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				+ "<a href=\"#/players\">Players</a>"
 				+"</div>"
 				+"<div ng-show=\"onedit\">"
-				+ "<ng-player-edit data=\"editData\"  save=\"save()\" reset=\"reset()\"></ng-player-edit>"
+				+ "<ng-player-edit data=\"editData\"  save=\"save()\" reset=\"reset()\" cancel=\"cancel()\"></ng-player-edit>"
 				+"</div>"
 				+ "'"
 				
@@ -312,7 +312,7 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				+ "<a href=\"#/teams\">Teams</a>"
 				+"</div>"
 				+"<div ng-show=\"onedit\">"
-				+ "<ng-team-edit data=\"editData\"  save=\"save()\" reset=\"reset()\"></ng-team-edit>"
+				+ "<ng-team-edit data=\"editData\"  save=\"save()\" reset=\"reset()\" cancel=\"cancel()\"></ng-team-edit>"
 				+"</div>"
 				+ "'"
 				
