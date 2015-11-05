@@ -217,6 +217,39 @@ public class AngularControllerStrategy extends AbstractUniqueFileGeneratorStrate
 		controller.append(",$routeparams) {");
 
 		controller.append("$rootScope.loading = true;");
+
+		controller.append("$scope.editData = {};");
+		controller.append("$scope.editError= [];");
+		controller.append("$scope.onedit= false;");
+
+		controller.append("$scope.edit = function(){");
+		controller.append("$scope.onedit= true;");
+		controller.append("};");
+
+		controller.append("$scope.save = function(){");
+		controller.append("$PlayerFactory.save($scope.editData).then(function(result){");
+		controller.append("$rootScope.addAlert({type:'success', msg:'comments saved'});");
+		controller.append("$scope.onedit= false;");
+		controller.append("},function(errors){");
+
+		controller.append("var status=\"\", properties=[];");
+		controller.append("for (var i = 0, l=errors.length; i < l; i++) {");
+		controller.append("status+= errors[i].property;");
+		controller.append("status+= \":\";");
+		controller.append("status+= errors[i].message;");
+		controller.append("status+= \"<br />\";");
+		controller.append("properties.push(errors[i].property);");
+		controller.append("}");
+		controller.append("$scope.editError = properties;");
+		controller.append("$rootScope.addAlert({type:'danger', msg:'comments not saved cause:<br />'+ status });");
+
+		controller.append("});");
+		controller.append("};");
+
+		controller.append("$scope.reset = function(){");
+		controller.append("$scope.editData = angular.copy($scope.data);");
+		controller.append("};");
+
 		controller.append("$").append(factoryName);
 		controller.append(".get($routeparams.id,[");
 
@@ -224,6 +257,7 @@ public class AngularControllerStrategy extends AbstractUniqueFileGeneratorStrate
 
 		controller.append("]).then(function(entity) {");
 		controller.append("$scope.data=entity;");
+		controller.append("$scope.editData = angular.copy(entity);");
 		controller.append("$rootScope.loading = false;");
 		controller.append("}, function(msg) {");
 		controller.append("alert(msg);");

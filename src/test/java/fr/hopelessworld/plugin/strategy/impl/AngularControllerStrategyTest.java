@@ -72,9 +72,42 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "angularApp.controller('PlayerCtrl',['$scope','$rootScope','PlayerFactory','$routeParams',PlayerCtrl]);"
 				+ "function PlayerCtrl($scope,$rootScope,$PlayerFactory,$routeparams) {"
 				+ "$rootScope.loading = true;"
+				
+				+ "$scope.editData = {};"
+				+ "$scope.editError= [];"
+				+ "$scope.onedit= false;"
+				
+				+ "$scope.edit = function(){"
+				+ "$scope.onedit= true;"
+				+"};"
+				
+				+ "$scope.save = function(){"
+				+ "$PlayerFactory.save($scope.editData).then(function(result){"
+				+ "$rootScope.addAlert({type:'success', msg:'comments saved'});"
+				+ "$scope.onedit= false;"
+				+ "},function(errors){"
+				
+				+ "var status=\"\", properties=[];"
+				+ "for (var i = 0, l=errors.length; i < l; i++) {"
+					+ "status+= errors[i].property;"
+					+ "status+= \":\";"
+					+ "status+= errors[i].message;"
+					+ "status+= \"<br />\";"
+					+ "properties.push(errors[i].property);"
+				+ "}"
+				+ "$scope.editError = properties;"
+				+ "$rootScope.addAlert({type:'danger', msg:'comments not saved cause:<br />'+ status });"
+				
+				+ "});"
+				+ "};"
+				
+				+ "$scope.reset = function(){"
+				+ "$scope.editData = angular.copy($scope.data);"
+				+ "};"
 					
 				+ "$PlayerFactory.get($routeparams.id,[]).then(function(entity) {"
 				+ "$scope.data=entity;"
+				+ "$scope.editData = angular.copy(entity);"
 				+ "$rootScope.loading = false;"
 				+ "}, function(msg) {"
 				+ "alert(msg);"
@@ -144,9 +177,43 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "angularApp.controller('PlayerCtrl',['$scope','$rootScope','PlayerFactory','$routeParams',PlayerCtrl]);"
 				+ "function PlayerCtrl($scope,$rootScope,$PlayerFactory,$routeparams) {"
 				+ "$rootScope.loading = true;"
-					
+
+				+ "$scope.editData = {};"
+				+ "$scope.editError= [];"
+				+ "$scope.onedit= false;"
+				
+				+ "$scope.edit = function(){"
+				+ "$scope.onedit= true;"
+				+"};"
+				
+				+ "$scope.save = function(){"
+				+ "$PlayerFactory.save($scope.editData).then(function(result){"
+				+ "$rootScope.addAlert({type:'success', msg:'comments saved'});"
+				+ "$scope.onedit= false;"
+				+ "},function(errors){"
+				
+				+ "var status=\"\", properties=[];"
+				+ "for (var i = 0, l=errors.length; i < l; i++) {"
+					+ "status+= errors[i].property;"
+					+ "status+= \":\";"
+					+ "status+= errors[i].message;"
+					+ "status+= \"<br />\";"
+					+ "properties.push(errors[i].property);"
+				+ "}"
+				+ "$scope.editError = properties;"
+				+ "$rootScope.addAlert({type:'danger', msg:'comments not saved cause:<br />'+ status });"
+				
+				+ "});"
+				+ "};"
+				
+				+ "$scope.reset = function(){"
+				+ "$scope.editData = angular.copy($scope.data);"
+				+ "};"
+				
+				
 				+ "$PlayerFactory.get($routeparams.id,[]).then(function(entity) {"
 				+ "$scope.data=entity;"
+				+ "$scope.editData = angular.copy(entity);"
 				+ "$rootScope.loading = false;"
 				+ "}, function(msg) {"
 				+ "alert(msg);"
@@ -223,8 +290,42 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "function PlayerCtrl($scope,$rootScope,$PlayerFactory,$routeparams) {"
 				+ "$rootScope.loading = true;"
 					
+				+ "$scope.editData = {};"
+				+ "$scope.editError= [];"
+				+ "$scope.onedit= false;"
+				
+				+ "$scope.edit = function(){"
+				+ "$scope.onedit= true;"
+				+"};"
+				
+				+ "$scope.save = function(){"
+				+ "$PlayerFactory.save($scope.editData).then(function(result){"
+				+ "$rootScope.addAlert({type:'success', msg:'comments saved'});"
+				+ "$scope.onedit= false;"
+				+ "},function(errors){"
+				
+				+ "var status=\"\", properties=[];"
+				+ "for (var i = 0, l=errors.length; i < l; i++) {"
+					+ "status+= errors[i].property;"
+					+ "status+= \":\";"
+					+ "status+= errors[i].message;"
+					+ "status+= \"<br />\";"
+					+ "properties.push(errors[i].property);"
+				+ "}"
+				+ "$scope.editError = properties;"
+				+ "$rootScope.addAlert({type:'danger', msg:'comments not saved cause:<br />'+ status });"
+				
+				+ "});"
+				+ "};"
+				
+				+ "$scope.reset = function(){"
+				+ "$scope.editData = angular.copy($scope.data);"
+				+ "};"
+				
+				
 				+ "$PlayerFactory.get($routeparams.id,['team']).then(function(entity) {"
 				+ "$scope.data=entity;"
+				+ "$scope.editData = angular.copy(entity);"
 				+ "$rootScope.loading = false;"
 				+ "}, function(msg) {"
 				+ "alert(msg);"
@@ -286,8 +387,44 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "function TeamCtrl($scope,$rootScope,$TeamFactory,$routeparams) {"
 				+ "$rootScope.loading = true;"
 				
+				
+				+ "$scope.editData = {};"
+				+ "$scope.editError= [];"
+				+ "$scope.onedit= false;"
+				
+				+ "$scope.edit = function(){"
+				+ "$scope.onedit= true;"
+				+"};"
+				
+				+ "$scope.save = function(){"
+				+ "$PlayerFactory.save($scope.editData).then(function(result){"
+				+ "$rootScope.addAlert({type:'success', msg:'comments saved'});"
+				+ "$scope.onedit= false;"
+				+ "},function(errors){"
+				
+				+ "var status=\"\", properties=[];"
+				+ "for (var i = 0, l=errors.length; i < l; i++) {"
+					+ "status+= errors[i].property;"
+					+ "status+= \":\";"
+					+ "status+= errors[i].message;"
+					+ "status+= \"<br />\";"
+					+ "properties.push(errors[i].property);"
+				+ "}"
+				+ "$scope.editError = properties;"
+				+ "$rootScope.addAlert({type:'danger', msg:'comments not saved cause:<br />'+ status });"
+				
+				+ "});"
+				+ "};"
+				
+				+ "$scope.reset = function(){"
+				+ "$scope.editData = angular.copy($scope.data);"
+				+ "};"
+				
+				
+				
 				+ "$TeamFactory.get($routeparams.id,[]).then(function(entity) {"
 				+ "$scope.data=entity;"
+				+ "$scope.editData = angular.copy(entity);"
 				+ "$rootScope.loading = false;"
 				+ "}, function(msg) {"
 				+ "alert(msg);"
@@ -367,8 +504,43 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "function PlayerCtrl($scope,$rootScope,$PlayerFactory,$routeparams) {"
 				+ "$rootScope.loading = true;"
 					
+				+ "$scope.editData = {};"
+				+ "$scope.editError= [];"
+				+ "$scope.onedit= false;"
+				
+				+ "$scope.edit = function(){"
+				+ "$scope.onedit= true;"
+				+"};"
+				
+				+ "$scope.save = function(){"
+				+ "$PlayerFactory.save($scope.editData).then(function(result){"
+				+ "$rootScope.addAlert({type:'success', msg:'comments saved'});"
+				+ "$scope.onedit= false;"
+				+ "},function(errors){"
+				
+				+ "var status=\"\", properties=[];"
+				+ "for (var i = 0, l=errors.length; i < l; i++) {"
+					+ "status+= errors[i].property;"
+					+ "status+= \":\";"
+					+ "status+= errors[i].message;"
+					+ "status+= \"<br />\";"
+					+ "properties.push(errors[i].property);"
+				+ "}"
+				+ "$scope.editError = properties;"
+				+ "$rootScope.addAlert({type:'danger', msg:'comments not saved cause:<br />'+ status });"
+				
+				+ "});"
+				+ "};"
+				
+				+ "$scope.reset = function(){"
+				+ "$scope.editData = angular.copy($scope.data);"
+				+ "};"
+				
+				
+				
 				+ "$PlayerFactory.get($routeparams.id,['team']).then(function(entity) {"
 				+ "$scope.data=entity;"
+				+ "$scope.editData = angular.copy(entity);"
 				+ "$rootScope.loading = false;"
 				+ "}, function(msg) {"
 				+ "alert(msg);"
@@ -437,8 +609,42 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "function TeamCtrl($scope,$rootScope,$TeamFactory,$routeparams) {"
 				+ "$rootScope.loading = true;"
 				
+				+ "$scope.editData = {};"
+				+ "$scope.editError= [];"
+				+ "$scope.onedit= false;"
+				
+				+ "$scope.edit = function(){"
+				+ "$scope.onedit= true;"
+				+"};"
+				
+				+ "$scope.save = function(){"
+				+ "$PlayerFactory.save($scope.editData).then(function(result){"
+				+ "$rootScope.addAlert({type:'success', msg:'comments saved'});"
+				+ "$scope.onedit= false;"
+				+ "},function(errors){"
+				
+				+ "var status=\"\", properties=[];"
+				+ "for (var i = 0, l=errors.length; i < l; i++) {"
+					+ "status+= errors[i].property;"
+					+ "status+= \":\";"
+					+ "status+= errors[i].message;"
+					+ "status+= \"<br />\";"
+					+ "properties.push(errors[i].property);"
+				+ "}"
+				+ "$scope.editError = properties;"
+				+ "$rootScope.addAlert({type:'danger', msg:'comments not saved cause:<br />'+ status });"
+				
+				+ "});"
+				+ "};"
+				
+				+ "$scope.reset = function(){"
+				+ "$scope.editData = angular.copy($scope.data);"
+				+ "};"
+				
+				
 				+ "$TeamFactory.get($routeparams.id,['players']).then(function(entity) {"
 				+ "$scope.data=entity;"
+				+ "$scope.editData = angular.copy(entity);"
 				+ "$rootScope.loading = false;"
 				+ "}, function(msg) {"
 				+ "alert(msg);"
