@@ -38,7 +38,7 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				+ "<a href=\"#/players\">Players</a>"
 				+"</div>"
 				+"<div ng-show=\"onedit\">"
-				+ "<ng-player-edit data=\"editData\"  save=\"save()\" reset=\"reset()\" cancel=\"cancel()\"></ng-player-edit>"
+				+ "<ng-player-edit data=\"editData\"  save=\"save()\" reset=\"reset()\" cancel=\"cancel()\" delete=\"delete(entityName)\" change=\"change(entityName)\"></ng-player-edit>"
 				+"</div>"
 				+ "'"
 				
@@ -96,7 +96,7 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				+ "<a href=\"#/players\">Players</a>"
 				+"</div>"
 				+"<div ng-show=\"onedit\">"
-				+ "<ng-player-edit data=\"editData\"  save=\"save()\" reset=\"reset()\" cancel=\"cancel()\"></ng-player-edit>"
+				+ "<ng-player-edit data=\"editData\"  save=\"save()\" reset=\"reset()\" cancel=\"cancel()\" delete=\"delete(entityName)\" change=\"change(entityName)\"></ng-player-edit>"
 				+"</div>"
 				+ "'"
 				+ ","
@@ -157,7 +157,7 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				+ "<a href=\"#/players\">Players</a>"
 				+"</div>"
 				+"<div ng-show=\"onedit\">"
-				+ "<ng-player-edit data=\"editData\"  save=\"save()\" reset=\"reset()\" cancel=\"cancel()\"></ng-player-edit>"
+				+ "<ng-player-edit data=\"editData\"  save=\"save()\" reset=\"reset()\" cancel=\"cancel()\" delete=\"delete(entityName)\" change=\"change(entityName)\"></ng-player-edit>"
 				+"</div>"
 				+ "'"
 				
@@ -175,8 +175,8 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				
 				+"<span  class=\"form-control\">{{data.team.name}}</span>"
 				+"<div class=\"input-group-btn\">"
-				+"<button type=\"button\" ng-click=\"delete(\\'team\\')\" class=\"btn btn-default\" aria-label=\"delete\"><span class=\"glyphicon glyphicon-remove\"></span>&nbsp;</button>"
-				+"<button type=\"button\" ng-click=\"change(\\'team\\')\" class=\"btn btn-default\" aria-label=\"search\"><span class=\"glyphicon glyphicon-search\"></span>&nbsp;</button>"
+				+"<button type=\"button\" ng-click=\"deleteEntity(\\'team\\')\" class=\"btn btn-default\" aria-label=\"delete\"><span class=\"glyphicon glyphicon-remove\"></span>&nbsp;</button>"
+				+"<button type=\"button\" ng-click=\"changeEntity(\\'team\\')\" class=\"btn btn-default\" aria-label=\"search\"><span class=\"glyphicon glyphicon-search\"></span>&nbsp;</button>"
 				
 				+ "</div>"
 				+ "<input type=\"submit\">"
@@ -211,7 +211,7 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				+ "<a href=\"#/teams\">Teams</a>"
 				+"</div>"
 				+"<div ng-show=\"onedit\">"
-				+ "<ng-team-edit data=\"editData\"  save=\"save()\" reset=\"reset()\" cancel=\"cancel()\"></ng-team-edit>"
+				+ "<ng-team-edit data=\"editData\"  save=\"save()\" reset=\"reset()\" cancel=\"cancel()\" delete=\"delete(entityName)\" change=\"change(entityName)\"></ng-team-edit>"
 				+"</div>"
 				+ "'"
 				
@@ -270,7 +270,7 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				+ "<a href=\"#/players\">Players</a>"
 				+"</div>"
 				+"<div ng-show=\"onedit\">"
-				+ "<ng-player-edit data=\"editData\"  save=\"save()\" reset=\"reset()\" cancel=\"cancel()\"></ng-player-edit>"
+				+ "<ng-player-edit data=\"editData\"  save=\"save()\" reset=\"reset()\" cancel=\"cancel()\" delete=\"delete(entityName)\" change=\"change(entityName)\"></ng-player-edit>"
 				+"</div>"
 				+ "'"
 				
@@ -289,8 +289,8 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 
 				+"<span  class=\"form-control\">{{data.team.name}}</span>"
 				+"<div class=\"input-group-btn\">"
-				+"<button type=\"button\" ng-click=\"delete(\\'team\\')\" class=\"btn btn-default\" aria-label=\"delete\"><span class=\"glyphicon glyphicon-remove\"></span>&nbsp;</button>"
-				+"<button type=\"button\" ng-click=\"change(\\'team\\')\" class=\"btn btn-default\" aria-label=\"search\"><span class=\"glyphicon glyphicon-search\"></span>&nbsp;</button>"
+				+"<button type=\"button\" ng-click=\"deleteEntity(\\'team\\')\" class=\"btn btn-default\" aria-label=\"delete\"><span class=\"glyphicon glyphicon-remove\"></span>&nbsp;</button>"
+				+"<button type=\"button\" ng-click=\"changeEntity(\\'team\\')\" class=\"btn btn-default\" aria-label=\"search\"><span class=\"glyphicon glyphicon-search\"></span>&nbsp;</button>"
 				
 				+ "</div>"
 				+ "<input type=\"submit\">"
@@ -328,7 +328,7 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				+ "<a href=\"#/teams\">Teams</a>"
 				+"</div>"
 				+"<div ng-show=\"onedit\">"
-				+ "<ng-team-edit data=\"editData\"  save=\"save()\" reset=\"reset()\" cancel=\"cancel()\"></ng-team-edit>"
+				+ "<ng-team-edit data=\"editData\"  save=\"save()\" reset=\"reset()\" cancel=\"cancel()\" delete=\"delete(entityName)\" change=\"change(entityName)\"></ng-team-edit>"
 				+"</div>"
 				+ "'"
 				

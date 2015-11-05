@@ -163,7 +163,7 @@ public final class AngularTemplateStrategy extends AbstractUniqueFileGeneratorSt
 		CharSequence angularEditDirective = AnalizedEntityUtils.getEditTagName(entity);
 
 		output.append("<").append(angularEditDirective)
-				.append(" data=\"editData\"  save=\"save()\" reset=\"reset()\" cancel=\"cancel()\"></")
+				.append(" data=\"editData\"  save=\"save()\" reset=\"reset()\" cancel=\"cancel()\" delete=\"delete(entityName)\" change=\"change(entityName)\"></")
 				.append(angularEditDirective).append(">");
 		output.append("</div>");
 
@@ -202,11 +202,11 @@ public final class AngularTemplateStrategy extends AbstractUniqueFileGeneratorSt
 					output.append("<span  class=\"form-control\">{{data.team.name}}</span>");
 					output.append("<div class=\"input-group-btn\">");
 					output.append(
-							"<button type=\"button\" ng-click=\"delete(\\'team\\')\" class=\"btn btn-default\" aria-label=\"delete\">");
+							"<button type=\"button\" ng-click=\"deleteEntity(\\'team\\')\" class=\"btn btn-default\" aria-label=\"delete\">");
 					output.append("<span class=\"glyphicon glyphicon-remove\"></span>&nbsp;");
 					output.append("</button>");
 					output.append(
-							"<button type=\"button\" ng-click=\"change(\\'team\\')\" class=\"btn btn-default\" aria-label=\"search\">");
+							"<button type=\"button\" ng-click=\"changeEntity(\\'team\\')\" class=\"btn btn-default\" aria-label=\"search\">");
 					output.append("<span class=\"glyphicon glyphicon-search\"></span>&nbsp;");
 					output.append("</button>");
 

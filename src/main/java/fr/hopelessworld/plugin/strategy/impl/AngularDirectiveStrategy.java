@@ -90,8 +90,20 @@ public final class AngularDirectiveStrategy extends AbstractUniqueFileGeneratorS
 		directive.append("save : '&',");
 		directive.append("reset : '&',");
 		directive.append("cancel : '&',");
+		directive.append("delete : '&',");
+		directive.append("change : '&',");
 		directive.append("error: '='");
+		directive.append("},");
+
+		directive.append("link: function ($scope, elem, attr) {");
+		directive.append("$scope.deleteEntity= function(entityName) {");
+		directive.append("$scope.delete({ entityName : entityName});");
 		directive.append("}");
+		directive.append("$scope.changeEntity= function(entityName) {");
+		directive.append("$scope.change({ entityName : entityName});");
+		directive.append("}");
+		directive.append("}");
+
 		directive.append("}");
 		directive.append("});");
 
