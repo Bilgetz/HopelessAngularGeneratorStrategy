@@ -230,7 +230,11 @@ public class AngularControllerStrategy extends AbstractUniqueFileGeneratorStrate
 		controller.append("};");
 
 		controller.append("$scope.save = function(){");
-		controller.append("$").append(factoryName).append(".save($scope.editData).then(function(entity){");
+		controller.append("$").append(factoryName).append(".save($scope.editData,[");
+
+		controller.append(this.subResourceToLoad(subEntityFields));
+
+		controller.append("]).then(function(entity){");
 		controller.append("$scope.data=entity;");
 		controller.append("$scope.editData = angular.copy(entity);");
 		controller.append("$rootScope.addAlert({type:'success', msg:'comments saved'});");

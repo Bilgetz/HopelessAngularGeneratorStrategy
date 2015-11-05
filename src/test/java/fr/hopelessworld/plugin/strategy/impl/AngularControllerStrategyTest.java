@@ -85,7 +85,7 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+"};"
 				
 				+ "$scope.save = function(){"
-				+ "$PlayerFactory.save($scope.editData).then(function(entity){"
+				+ "$PlayerFactory.save($scope.editData,[]).then(function(entity){"
 				+ "$scope.data=entity;"
 				+ "$scope.editData = angular.copy(entity);"
 				+ "$rootScope.addAlert({type:'success', msg:'comments saved'});"
@@ -195,7 +195,7 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+"};"
 				
 				+ "$scope.save = function(){"
-				+ "$PlayerFactory.save($scope.editData).then(function(entity){"
+				+ "$PlayerFactory.save($scope.editData,[]).then(function(entity){"
 				+ "$scope.data=entity;"
 				+ "$scope.editData = angular.copy(entity);"
 				+ "$rootScope.addAlert({type:'success', msg:'comments saved'});"
@@ -312,7 +312,7 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+"};"
 				
 				+ "$scope.save = function(){"
-				+ "$PlayerFactory.save($scope.editData).then(function(entity){"
+				+ "$PlayerFactory.save($scope.editData,['team']).then(function(entity){"
 				+ "$scope.data=entity;"
 				+ "$scope.editData = angular.copy(entity);"
 				+ "$rootScope.addAlert({type:'success', msg:'comments saved'});"
@@ -415,7 +415,7 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+"};"
 				
 				+ "$scope.save = function(){"
-				+ "$TeamFactory.save($scope.editData).then(function(entity){"
+				+ "$TeamFactory.save($scope.editData,[]).then(function(entity){"
 				+ "$scope.data=entity;"
 				+ "$scope.editData = angular.copy(entity);"
 				+ "$rootScope.addAlert({type:'success', msg:'comments saved'});"
@@ -536,7 +536,7 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+"};"
 				
 				+ "$scope.save = function(){"
-				+ "$PlayerFactory.save($scope.editData).then(function(entity){"
+				+ "$PlayerFactory.save($scope.editData,['team']).then(function(entity){"
 				+ "$scope.data=entity;"
 				+ "$scope.editData = angular.copy(entity);"
 				+ "$rootScope.addAlert({type:'success', msg:'comments saved'});"
@@ -646,7 +646,7 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+"};"
 				
 				+ "$scope.save = function(){"
-				+ "$TeamFactory.save($scope.editData).then(function(entity){"
+				+ "$TeamFactory.save($scope.editData,['players']).then(function(entity){"
 				+ "$scope.data=entity;"
 				+ "$scope.editData = angular.copy(entity);"
 				+ "$rootScope.addAlert({type:'success', msg:'comments saved'});"
