@@ -80,6 +80,9 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "$scope.edit = function(){"
 				+ "$scope.onedit= true;"
 				+"};"
+				+ "$scope.cancel = function(){"
+				+ "$scope.onedit= false;"
+				+"};"
 				
 				+ "$scope.save = function(){"
 				+ "$PlayerFactory.save($scope.editData).then(function(result){"
@@ -184,6 +187,9 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				
 				+ "$scope.edit = function(){"
 				+ "$scope.onedit= true;"
+				+"};"
+				+ "$scope.cancel = function(){"
+				+ "$scope.onedit= false;"
 				+"};"
 				
 				+ "$scope.save = function(){"
@@ -297,6 +303,9 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "$scope.edit = function(){"
 				+ "$scope.onedit= true;"
 				+"};"
+				+ "$scope.cancel = function(){"
+				+ "$scope.onedit= false;"
+				+"};"
 				
 				+ "$scope.save = function(){"
 				+ "$PlayerFactory.save($scope.editData).then(function(result){"
@@ -394,6 +403,9 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				
 				+ "$scope.edit = function(){"
 				+ "$scope.onedit= true;"
+				+"};"
+				+ "$scope.cancel = function(){"
+				+ "$scope.onedit= false;"
 				+"};"
 				
 				+ "$scope.save = function(){"
@@ -511,6 +523,9 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "$scope.edit = function(){"
 				+ "$scope.onedit= true;"
 				+"};"
+				+ "$scope.cancel = function(){"
+				+ "$scope.onedit= false;"
+				+"};"
 				
 				+ "$scope.save = function(){"
 				+ "$PlayerFactory.save($scope.editData).then(function(result){"
@@ -615,6 +630,9 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				
 				+ "$scope.edit = function(){"
 				+ "$scope.onedit= true;"
+				+"};"
+				+ "$scope.cancel = function(){"
+				+ "$scope.onedit= false;"
 				+"};"
 				
 				+ "$scope.save = function(){"
