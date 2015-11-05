@@ -141,7 +141,29 @@ public class AngularFactoryStrategy extends AbstractUniqueFileGeneratorStrategy 
 	private CharSequence getSaveForEntity(AnalizedEntity entity) {
 		StringBuilder method = new StringBuilder();
 
+		String entityName = entity.getSimpleName();
+		String entitiesName = AnalizedEntityUtils.getEntitiesName(entityName).toLowerCase();
+
 		method.append("save: function(data){");
+
+		method.append("var deferred = $q.defer();");
+		method.append("var dataJson = angular.toJson(data);");
+		method.append("$http.put('rest/").append(entitiesName)
+				.append("/' + data.id, dataJson).then(function(response) {");
+		method.append("deferred.resolve(response);");
+		method.append("}, function (response) {");
+		method.append("var result;");
+		method.append(
+				"if(response != undefined &&  response.data != undefined && response.data.errors != undefined) {");
+		method.append("result = response.data.errors;");
+		method.append("} else  {");
+		method.append("var responseText = response != undefined ? response.statusText : 'no response';");
+		method.append("result = [{property: 'Cannot save ' , message:  responseText }];");
+		method.append("}");
+		method.append("deferred.reject(result);");
+		method.append("});");
+		method.append("return deferred.promise;");
+
 		method.append("}");
 
 		return method;

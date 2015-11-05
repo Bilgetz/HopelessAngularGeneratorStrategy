@@ -66,6 +66,23 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ ","
 				
 				+ "save: function(data){"
+				
+					+ "var deferred = $q.defer();"
+					+ "var dataJson = angular.toJson(data);"
+					+ "$http.put('rest/players/' + data.id, dataJson).then(function(response) {"
+						+ "deferred.resolve(response);"
+					+ "}, function (response) {"
+						+ "var result;"
+						+ "if(response != undefined &&  response.data != undefined && response.data.errors != undefined) {"
+							+ "result = response.data.errors;"
+						+ "} else  {"
+							+ "var responseText = response != undefined ? response.statusText : 'no response';"
+							+ "result = [{property: 'Cannot save ' , message:  responseText }];"
+						+ "}"
+						+ "deferred.reject(result);"
+						+ "});"
+					+ "return deferred.promise;"
+				
 				+ "}"
 				+ ","
 				
@@ -155,6 +172,23 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ ","
 				
 				+ "save: function(data){"
+				
+				+ "var deferred = $q.defer();"
+				+ "var dataJson = angular.toJson(data);"
+				+ "$http.put('rest/players/' + data.id, dataJson).then(function(response) {"
+					+ "deferred.resolve(response);"
+				+ "}, function (response) {"
+					+ "var result;"
+					+ "if(response != undefined &&  response.data != undefined && response.data.errors != undefined) {"
+						+ "result = response.data.errors;"
+					+ "} else  {"
+						+ "var responseText = response != undefined ? response.statusText : 'no response';"
+						+ "result = [{property: 'Cannot save ' , message:  responseText }];"
+					+ "}"
+					+ "deferred.reject(result);"
+					+ "});"
+				+ "return deferred.promise;"
+				
 				+ "}"
 				+ ","
 				
@@ -220,6 +254,23 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ ","
 				
 				+ "save: function(data){"
+				
+					+ "var deferred = $q.defer();"
+					+ "var dataJson = angular.toJson(data);"
+					+ "$http.put('rest/teams/' + data.id, dataJson).then(function(response) {"
+						+ "deferred.resolve(response);"
+					+ "}, function (response) {"
+						+ "var result;"
+						+ "if(response != undefined &&  response.data != undefined && response.data.errors != undefined) {"
+							+ "result = response.data.errors;"
+						+ "} else  {"
+							+ "var responseText = response != undefined ? response.statusText : 'no response';"
+							+ "result = [{property: 'Cannot save ' , message:  responseText }];"
+						+ "}"
+						+ "deferred.reject(result);"
+						+ "});"
+					+ "return deferred.promise;"
+				
 				+ "}"
 				+ ","
 				
@@ -303,6 +354,23 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ ","
 				
 				+ "save: function(data){"
+				
+					+ "var deferred = $q.defer();"
+					+ "var dataJson = angular.toJson(data);"
+					+ "$http.put('rest/players/' + data.id, dataJson).then(function(response) {"
+						+ "deferred.resolve(response);"
+					+ "}, function (response) {"
+						+ "var result;"
+						+ "if(response != undefined &&  response.data != undefined && response.data.errors != undefined) {"
+							+ "result = response.data.errors;"
+						+ "} else  {"
+							+ "var responseText = response != undefined ? response.statusText : 'no response';"
+							+ "result = [{property: 'Cannot save ' , message:  responseText }];"
+						+ "}"
+						+ "deferred.reject(result);"
+						+ "});"
+					+ "return deferred.promise;"
+				
 				+ "}"
 				+ ","
 				
@@ -381,6 +449,23 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ ","
 				
 				+ "save: function(data){"
+				
+					+ "var deferred = $q.defer();"
+					+ "var dataJson = angular.toJson(data);"
+					+ "$http.put('rest/teams/' + data.id, dataJson).then(function(response) {"
+						+ "deferred.resolve(response);"
+					+ "}, function (response) {"
+						+ "var result;"
+						+ "if(response != undefined &&  response.data != undefined && response.data.errors != undefined) {"
+							+ "result = response.data.errors;"
+						+ "} else  {"
+							+ "var responseText = response != undefined ? response.statusText : 'no response';"
+							+ "result = [{property: 'Cannot save ' , message:  responseText }];"
+						+ "}"
+						+ "deferred.reject(result);"
+						+ "});"
+					+ "return deferred.promise;"
+				
 				+ "}"
 				+ ","
 				
