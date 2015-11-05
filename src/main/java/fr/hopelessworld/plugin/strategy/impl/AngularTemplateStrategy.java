@@ -150,7 +150,7 @@ public final class AngularTemplateStrategy extends AbstractUniqueFileGeneratorSt
 			}
 		}
 
-		output.append("<button ng-click=\"edit()\">{{\\'angular.edit\\' | translate }}</button>");
+		output.append("<button type=\"button\" ng-click=\"edit()\">{{\\'angular.edit\\' | translate }}</button>");
 		output.append("<a href=\"");
 		output.append(this.getUrlForEntities(entity));
 		output.append("\">");
@@ -239,8 +239,10 @@ public final class AngularTemplateStrategy extends AbstractUniqueFileGeneratorSt
 		}
 
 		output.append("<input type=\"submit\">");
-		output.append("<button ng-click=\"reset()\">{{\\'angular.edit.reset\\' | translate }}</button>");
-		output.append("<button ng-click=\"cancel()\">{{\\'angular.edit.cancel\\' | translate }}</button>");
+		output.append(
+				"<button type=\"button\" ng-click=\"reset()\">{{\\'angular.edit.reset\\' | translate }}</button>");
+		output.append(
+				"<button type=\"button\" ng-click=\"cancel()\">{{\\'angular.edit.cancel\\' | translate }}</button>");
 		output.append("</form>");
 		output.append("'");
 		return output;
