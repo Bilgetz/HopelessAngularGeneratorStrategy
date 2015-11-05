@@ -132,7 +132,7 @@ public class AngularFactoryStrategy extends AbstractUniqueFileGeneratorStrategy 
 	private CharSequence getAddForEntity(AnalizedEntity entity) {
 		StringBuilder method = new StringBuilder();
 
-		method.append("add: function(data){");
+		method.append("add: function(data,subToLoad){");
 		method.append("}");
 
 		return method;
@@ -144,13 +144,21 @@ public class AngularFactoryStrategy extends AbstractUniqueFileGeneratorStrategy 
 		String entityName = entity.getSimpleName();
 		String entitiesName = AnalizedEntityUtils.getEntitiesName(entityName).toLowerCase();
 
-		method.append("save: function(data){");
+		method.append("save: function(data,subToLoad){");
 
 		method.append("var deferred = $q.defer();");
 		method.append("var dataJson = angular.toJson(data);");
-		method.append("$http.put('rest/").append(entitiesName)
-				.append("/' + data.id, dataJson).then(function(response) {");
-		method.append("deferred.resolve(response);");
+		method.append("var httpPromise = $http.put('rest/").append(entitiesName).append("/' + data.id, dataJson);");
+		method.append("SpringDataRestAdapter.process(httpPromise, subToLoad).then(function(entity) {");
+
+		/** check if entite have one To many or many to one field */
+		CharSequence ifs = getSubRessourceForGetAndFind(entity);
+
+		if (StringUtils.isNotBlank(ifs)) {
+			method.append(ifs);
+		}
+
+		method.append("deferred.resolve(entity);");
 		method.append("}, function (response) {");
 		method.append("var result;");
 		method.append(

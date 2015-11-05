@@ -61,16 +61,17 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ "}"
 				+ ","
 				
-				+ "add: function(data){"
+				+ "add: function(data,subToLoad){"
 				+ "}"
 				+ ","
 				
-				+ "save: function(data){"
+				+ "save: function(data,subToLoad){"
 				
 					+ "var deferred = $q.defer();"
 					+ "var dataJson = angular.toJson(data);"
-					+ "$http.put('rest/players/' + data.id, dataJson).then(function(response) {"
-						+ "deferred.resolve(response);"
+					+ "var httpPromise = $http.put('rest/players/' + data.id, dataJson);"
+					+ "SpringDataRestAdapter.process(httpPromise, subToLoad).then(function(entity) {"
+						+ "deferred.resolve(entity);"
 					+ "}, function (response) {"
 						+ "var result;"
 						+ "if(response != undefined &&  response.data != undefined && response.data.errors != undefined) {"
@@ -167,16 +168,23 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ "}"
 				+ ","
 				
-				+ "add: function(data){"
+				+ "add: function(data,subToLoad){"
 				+ "}"
 				+ ","
 				
-				+ "save: function(data){"
+				+ "save: function(data,subToLoad){"
 				
 				+ "var deferred = $q.defer();"
 				+ "var dataJson = angular.toJson(data);"
-				+ "$http.put('rest/players/' + data.id, dataJson).then(function(response) {"
-					+ "deferred.resolve(response);"
+				+ "var httpPromise = $http.put('rest/players/' + data.id, dataJson);"
+				+ "SpringDataRestAdapter.process(httpPromise, subToLoad).then(function(entity) {"
+				
+				+ "if(entity.team != undefined && entity.team._embeddedItems != undefined) {"
+				+ "entity.team = entity.team._embeddedItems ;"
+				+ "}"
+				
+					
+					+ "deferred.resolve(entity);"
 				+ "}, function (response) {"
 					+ "var result;"
 					+ "if(response != undefined &&  response.data != undefined && response.data.errors != undefined) {"
@@ -249,16 +257,17 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ "}"
 				+ ","
 				
-				+ "add: function(data){"
+				+ "add: function(data,subToLoad){"
 				+ "}"
 				+ ","
 				
-				+ "save: function(data){"
+				+ "save: function(data,subToLoad){"
 				
 					+ "var deferred = $q.defer();"
 					+ "var dataJson = angular.toJson(data);"
-					+ "$http.put('rest/teams/' + data.id, dataJson).then(function(response) {"
-						+ "deferred.resolve(response);"
+					+ "var httpPromise = $http.put('rest/teams/' + data.id, dataJson);"
+					+ "SpringDataRestAdapter.process(httpPromise, subToLoad).then(function(entity) {"
+						+ "deferred.resolve(entity);"
 					+ "}, function (response) {"
 						+ "var result;"
 						+ "if(response != undefined &&  response.data != undefined && response.data.errors != undefined) {"
@@ -349,16 +358,23 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ "}"
 				+ ","
 				
-				+ "add: function(data){"
+				+ "add: function(data,subToLoad){"
 				+ "}"
 				+ ","
 				
-				+ "save: function(data){"
+				+ "save: function(data,subToLoad){"
 				
 					+ "var deferred = $q.defer();"
 					+ "var dataJson = angular.toJson(data);"
-					+ "$http.put('rest/players/' + data.id, dataJson).then(function(response) {"
-						+ "deferred.resolve(response);"
+					+ "var httpPromise = $http.put('rest/players/' + data.id, dataJson);"
+					+ "SpringDataRestAdapter.process(httpPromise, subToLoad).then(function(entity) {"
+					
+						+ "if(entity.team != undefined && entity.team._embeddedItems != undefined) {"
+						+ "entity.team = entity.team._embeddedItems ;"
+						+ "}"
+						
+						+ "deferred.resolve(entity);"
+						
 					+ "}, function (response) {"
 						+ "var result;"
 						+ "if(response != undefined &&  response.data != undefined && response.data.errors != undefined) {"
@@ -444,16 +460,22 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ "}"
 				+ ","
 				
-				+ "add: function(data){"
+				+ "add: function(data,subToLoad){"
 				+ "}"
 				+ ","
 				
-				+ "save: function(data){"
+				+ "save: function(data,subToLoad){"
 				
 					+ "var deferred = $q.defer();"
 					+ "var dataJson = angular.toJson(data);"
-					+ "$http.put('rest/teams/' + data.id, dataJson).then(function(response) {"
-						+ "deferred.resolve(response);"
+					+ "var httpPromise = $http.put('rest/teams/' + data.id, dataJson);"
+					+ "SpringDataRestAdapter.process(httpPromise, subToLoad).then(function(entity) {"
+					
+						+ "if(entity.players != undefined && entity.players._embeddedItems != undefined) {"
+						+ "entity.players = entity.players._embeddedItems ;"
+						+ "}"
+					
+						+ "deferred.resolve(entity);"
 					+ "}, function (response) {"
 						+ "var result;"
 						+ "if(response != undefined &&  response.data != undefined && response.data.errors != undefined) {"
