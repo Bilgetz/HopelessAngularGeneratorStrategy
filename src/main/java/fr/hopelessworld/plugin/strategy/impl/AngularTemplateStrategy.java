@@ -150,6 +150,7 @@ public final class AngularTemplateStrategy extends AbstractUniqueFileGeneratorSt
 			}
 		}
 
+		output.append("<button ng-click=\"edit()\">{{\\'angular.edit\\' | translate }}</button>");
 		output.append("<a href=\"");
 		output.append(this.getUrlForEntities(entity));
 		output.append("\">");
