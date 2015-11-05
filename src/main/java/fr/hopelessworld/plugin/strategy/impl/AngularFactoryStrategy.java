@@ -143,16 +143,24 @@ public class AngularFactoryStrategy extends AbstractUniqueFileGeneratorStrategy 
 
 		String entityName = entity.getSimpleName();
 		String entitiesName = AnalizedEntityUtils.getEntitiesName(entityName).toLowerCase();
+		CharSequence ifs;
 
 		method.append("save: function(data,subToLoad){");
 
 		method.append("var deferred = $q.defer();");
+
+		ifs = getSubRessourceForSaveAndAdd(entity);
+
+		if (StringUtils.isNotBlank(ifs)) {
+			method.append(ifs);
+		}
+
 		method.append("var dataJson = angular.toJson(data);");
 		method.append("var httpPromise = $http.put('rest/").append(entitiesName).append("/' + data.id, dataJson);");
 		method.append("SpringDataRestAdapter.process(httpPromise, subToLoad).then(function(entity) {");
 
 		/** check if entite have one To many or many to one field */
-		CharSequence ifs = getSubRessourceForGetAndFind(entity);
+		ifs = getSubRessourceForGetAndFind(entity);
 
 		if (StringUtils.isNotBlank(ifs)) {
 			method.append(ifs);
@@ -211,6 +219,46 @@ public class AngularFactoryStrategy extends AbstractUniqueFileGeneratorStrategy 
 					.append("._embeddedItems ;");
 			method.append("}");
 		}
+		return method;
+	}
+
+	private CharSequence getSubRessourceForSaveAndAdd(AnalizedEntity entity) {
+		StringBuilder method = new StringBuilder();
+		List<Field> subEntityFields = new ArrayList<>();
+		List<Field> subEntitiesFields = new ArrayList<>();
+		for (Field field : entity.getFields()) {
+			if (field.getAnnotation(ManyToOne.class) != null || field.getAnnotation(OneToOne.class) != null) {
+				subEntityFields.add(field);
+			}
+			if (field.getAnnotation(OneToMany.class) != null || field.getAnnotation(ManyToMany.class) != null) {
+				subEntitiesFields.add(field);
+			}
+		}
+
+		for (Field field : subEntityFields) {
+			CharSequence fieldname = field.getSimpleName();
+			method.append("if(data.").append(fieldname).append(" != undefined && data.").append(fieldname)
+					.append("._links != undefined ) {");
+			method.append("data.").append(fieldname).append(" = data.").append(fieldname).append("._links.self.href;");
+			method.append("}");
+		}
+
+		for (Field field : subEntitiesFields) {
+			CharSequence fieldname = field.getSimpleName();
+
+			method.append("if(data.").append(fieldname).append(" != undefined && data.").append(fieldname)
+					.append(".length >0  ) {");
+			method.append("for(var i=0, l = data.").append(fieldname).append(".length; i < l; i++) {");
+			method.append("if(data.").append(fieldname).append("[i] != undefined && data.").append(fieldname)
+					.append("[i]._links != undefined) {");
+			method.append("data.").append(fieldname).append("[i] = data.").append(fieldname)
+					.append("[i]._links.self.href;");
+			method.append("}");
+			method.append("}");
+			method.append("}");
+
+		}
+
 		return method;
 	}
 

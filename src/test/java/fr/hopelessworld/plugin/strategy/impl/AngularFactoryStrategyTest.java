@@ -175,6 +175,11 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ "save: function(data,subToLoad){"
 				
 				+ "var deferred = $q.defer();"
+				
+				+"if(data.team != undefined && data.team._links != undefined ) {"
+					+"data.team = data.team._links.self.href;"
+				+"}"
+				
 				+ "var dataJson = angular.toJson(data);"
 				+ "var httpPromise = $http.put('rest/players/' + data.id, dataJson);"
 				+ "SpringDataRestAdapter.process(httpPromise, subToLoad).then(function(entity) {"
@@ -365,6 +370,11 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ "save: function(data,subToLoad){"
 				
 					+ "var deferred = $q.defer();"
+					
+					+"if(data.team != undefined && data.team._links != undefined ) {"
+						+"data.team = data.team._links.self.href;"
+					+"}"
+					
 					+ "var dataJson = angular.toJson(data);"
 					+ "var httpPromise = $http.put('rest/players/' + data.id, dataJson);"
 					+ "SpringDataRestAdapter.process(httpPromise, subToLoad).then(function(entity) {"
@@ -467,6 +477,15 @@ public class AngularFactoryStrategyTest extends AbstractTestStrategy {
 				+ "save: function(data,subToLoad){"
 				
 					+ "var deferred = $q.defer();"
+					
+					+"if(data.players != undefined && data.players.length >0  ) {"
+						+"for(var i=0, l = data.players.length; i < l; i++) {"
+							+"if(data.players[i] != undefined && data.players[i]._links != undefined) {"
+								+"data.players[i] = data.players[i]._links.self.href;"
+							+ "}"
+						+ "}"
+					+"}"
+					
 					+ "var dataJson = angular.toJson(data);"
 					+ "var httpPromise = $http.put('rest/teams/' + data.id, dataJson);"
 					+ "SpringDataRestAdapter.process(httpPromise, subToLoad).then(function(entity) {"
