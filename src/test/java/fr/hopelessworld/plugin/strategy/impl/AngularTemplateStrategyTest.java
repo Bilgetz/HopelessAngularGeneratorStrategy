@@ -32,7 +32,9 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				
 				+ "Player:'<h1>{{data.name}}</h1>" 
 				+ "<!-- id not show -->"
-				+ "{{\\'entity.Player.name\\' | translate }}:{{data.name}}<br />'"
+				+ "{{\\'entity.Player.name\\' | translate }}:{{data.name}}<br />"
+				+ "<a href=\"#/players\">Players</a>"
+				+ "'"
 				
 				+ ","
 				
@@ -80,7 +82,9 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				+ "Player:'<h1>{{data.name}}</h1>" 
 				+ "<!-- id not show -->"
 				+ "{{\\'entity.Player.name\\' | translate }}:{{data.name}}<br />"
-				+ "{{\\'entity.Player.creation\\' | translate }}:{{data.creation | date:\\'medium\\'}}<br />'"
+				+ "{{\\'entity.Player.creation\\' | translate }}:{{data.creation | date:\\'medium\\'}}<br />"
+				+ "<a href=\"#/players\">Players</a>"
+				+ "'"
 				+ ","
 				
 				+ "PlayerEdit:'" 
@@ -131,7 +135,9 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				+ "Player:'<h1>{{data.name}}</h1>" 
 				+ "<!-- id not show -->"
 				+ "{{\\'entity.Player.name\\' | translate }}:{{data.name}}<br />"
-				+ "{{\\'entity.Player.team\\' | translate }}:<a href=\"#/teams/{{data.team.id}}\">{{data.team.name}}</a><br />'"
+				+ "{{\\'entity.Player.team\\' | translate }}:<a href=\"#/teams/{{data.team.id}}\">{{data.team.name}}</a><br />"
+				+ "<a href=\"#/players\">Players</a>"
+				+ "'"
 				+ ","
 				+ "PlayerEdit:'" 
 				+ "<h1>{{data.name}}</h1>" 
@@ -169,7 +175,9 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				
 				+ "Team:'<h1>{{data.name}}</h1>"
 				+ "<!-- id not show -->"
-				+ "{{\\'entity.Team.name\\' | translate }}:{{data.name}}<br />'"
+				+ "{{\\'entity.Team.name\\' | translate }}:{{data.name}}<br />"
+				+ "<a href=\"#/teams\">Teams</a>"
+				+ "'"
 				
 				+ "," 
 				
@@ -218,7 +226,9 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				+ "Player:'<h1>{{data.name}}</h1>" 
 				+ "<!-- id not show -->"
 				+ "{{\\'entity.Player.name\\' | translate }}:{{data.name}}<br />"
-				+ "{{\\'entity.Player.team\\' | translate }}:<a href=\"#/teams/{{data.team.id}}\">{{data.team.name}}</a><br />'"
+				+ "{{\\'entity.Player.team\\' | translate }}:<a href=\"#/teams/{{data.team.id}}\">{{data.team.name}}</a><br />"
+				+ "<a href=\"#/players\">Players</a>"
+				+ "'"
 				
 				+ ","
 				+ "PlayerEdit:'" 
@@ -259,7 +269,9 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				+ "{{\\'entity.Team.name\\' | translate }}:{{data.name}}<br />"
 				+ "{{\\'entity.Team.players\\' | translate }}:<ul><li ng-repeat=\"entity in data.players\">"
 				+ "<a href=\"#/players/{{entity.id}}\">{{entity.name}}</a>"
-				+ "</li></ul><br />'"
+				+ "</li></ul><br />"
+				+ "<a href=\"#/teams\">Teams</a>"
+				+ "'"
 				
 				+ ","
 				

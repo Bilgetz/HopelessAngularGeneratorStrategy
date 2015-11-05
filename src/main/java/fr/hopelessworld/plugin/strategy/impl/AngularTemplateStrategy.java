@@ -149,6 +149,11 @@ public final class AngularTemplateStrategy extends AbstractUniqueFileGeneratorSt
 			}
 		}
 
+		output.append("<a href=\"");
+		output.append(this.getUrlForEntities(entity));
+		output.append("\">");
+		output.append(AnalizedEntityUtils.getEntitiesName(entityName));
+		output.append("</a>");
 		output.append("'");
 
 		return output;
@@ -271,6 +276,11 @@ public final class AngularTemplateStrategy extends AbstractUniqueFileGeneratorSt
 		String nameOfFieldEntity = AnalizedEntityUtils.getEntitiesName(fieldEntity.getSimpleName()).toLowerCase();
 		Field idField = CollectionUtils.find(fieldEntity.getFields(), this.idFieldPredicate);
 		return StringUtils.join("#/", nameOfFieldEntity, "/{{", name, ".", idField.getSimpleName(), "}}");
+	}
+
+	private String getUrlForEntities(AnalizedEntity fieldEntity) {
+		String nameOfFieldEntity = AnalizedEntityUtils.getEntitiesName(fieldEntity.getSimpleName()).toLowerCase();
+		return StringUtils.join("#/", nameOfFieldEntity);
 	}
 
 	/**
