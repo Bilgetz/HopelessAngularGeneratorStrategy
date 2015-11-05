@@ -101,6 +101,7 @@ public final class AngularTemplateStrategy extends AbstractUniqueFileGeneratorSt
 		output.append(entityName).append(":'");
 
 		output.append("<h1>{{").append(this.getShowName("data.", entity)).append("}}</h1>");
+		output.append("<div ng-hide=\"onedit\">");
 
 		for (Field field : entity.getFields()) {
 
@@ -154,6 +155,17 @@ public final class AngularTemplateStrategy extends AbstractUniqueFileGeneratorSt
 		output.append("\">");
 		output.append(AnalizedEntityUtils.getEntitiesName(entityName));
 		output.append("</a>");
+
+		output.append("</div>");
+		output.append("<div ng-show=\"onedit\">");
+
+		CharSequence angularEditDirective = AnalizedEntityUtils.getEditTagName(entity);
+
+		output.append("<").append(angularEditDirective)
+				.append(" data=\"editData\"  save=\"save()\" reset=\"reset()\"></").append(angularEditDirective)
+				.append(">");
+		output.append("</div>");
+
 		output.append("'");
 
 		return output;

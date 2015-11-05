@@ -31,9 +31,14 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				+ ","
 				
 				+ "Player:'<h1>{{data.name}}</h1>" 
+				+"<div ng-hide=\"onedit\">"
 				+ "<!-- id not show -->"
 				+ "{{\\'entity.Player.name\\' | translate }}:{{data.name}}<br />"
 				+ "<a href=\"#/players\">Players</a>"
+				+"</div>"
+				+"<div ng-show=\"onedit\">"
+				+ "<ng-player-edit data=\"editData\"  save=\"save()\" reset=\"reset()\"></ng-player-edit>"
+				+"</div>"
 				+ "'"
 				
 				+ ","
@@ -82,10 +87,15 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				+ ","
 				
 				+ "Player:'<h1>{{data.name}}</h1>" 
+				+"<div ng-hide=\"onedit\">"
 				+ "<!-- id not show -->"
 				+ "{{\\'entity.Player.name\\' | translate }}:{{data.name}}<br />"
 				+ "{{\\'entity.Player.creation\\' | translate }}:{{data.creation | date:\\'medium\\'}}<br />"
 				+ "<a href=\"#/players\">Players</a>"
+				+"</div>"
+				+"<div ng-show=\"onedit\">"
+				+ "<ng-player-edit data=\"editData\"  save=\"save()\" reset=\"reset()\"></ng-player-edit>"
+				+"</div>"
 				+ "'"
 				+ ","
 				
@@ -137,11 +147,17 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				+ ","
 				
 				+ "Player:'<h1>{{data.name}}</h1>" 
+				+"<div ng-hide=\"onedit\">"
 				+ "<!-- id not show -->"
 				+ "{{\\'entity.Player.name\\' | translate }}:{{data.name}}<br />"
 				+ "{{\\'entity.Player.team\\' | translate }}:<a href=\"#/teams/{{data.team.id}}\">{{data.team.name}}</a><br />"
 				+ "<a href=\"#/players\">Players</a>"
+				+"</div>"
+				+"<div ng-show=\"onedit\">"
+				+ "<ng-player-edit data=\"editData\"  save=\"save()\" reset=\"reset()\"></ng-player-edit>"
+				+"</div>"
 				+ "'"
+				
 				+ ","
 				+ "PlayerEdit:'" 
 				+ "<h1>{{data.name}}</h1>" 
@@ -180,9 +196,14 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				+ "," //une autre entité
 				
 				+ "Team:'<h1>{{data.name}}</h1>"
+				+"<div ng-hide=\"onedit\">"
 				+ "<!-- id not show -->"
 				+ "{{\\'entity.Team.name\\' | translate }}:{{data.name}}<br />"
 				+ "<a href=\"#/teams\">Teams</a>"
+				+"</div>"
+				+"<div ng-show=\"onedit\">"
+				+ "<ng-team-edit data=\"editData\"  save=\"save()\" reset=\"reset()\"></ng-team-edit>"
+				+"</div>"
 				+ "'"
 				
 				+ "," 
@@ -232,13 +253,19 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				+ ","
 				
 				+ "Player:'<h1>{{data.name}}</h1>" 
+				+"<div ng-hide=\"onedit\">"
 				+ "<!-- id not show -->"
 				+ "{{\\'entity.Player.name\\' | translate }}:{{data.name}}<br />"
 				+ "{{\\'entity.Player.team\\' | translate }}:<a href=\"#/teams/{{data.team.id}}\">{{data.team.name}}</a><br />"
 				+ "<a href=\"#/players\">Players</a>"
+				+"</div>"
+				+"<div ng-show=\"onedit\">"
+				+ "<ng-player-edit data=\"editData\"  save=\"save()\" reset=\"reset()\"></ng-player-edit>"
+				+"</div>"
 				+ "'"
 				
 				+ ","
+				
 				+ "PlayerEdit:'" 
 				+ "<h1>{{data.name}}</h1>" 
 				+ "<form action=\"#\" ng-submit=\"save()\">"
@@ -275,12 +302,18 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				
 				+ "," //une autre entité
 				+ "Team:'<h1>{{data.name}}</h1>"
+				+"<div ng-hide=\"onedit\">"
 				+ "<!-- id not show -->"
 				+ "{{\\'entity.Team.name\\' | translate }}:{{data.name}}<br />"
 				+ "{{\\'entity.Team.players\\' | translate }}:<ul><li ng-repeat=\"entity in data.players\">"
 				+ "<a href=\"#/players/{{entity.id}}\">{{entity.name}}</a>"
 				+ "</li></ul><br />"
+
 				+ "<a href=\"#/teams\">Teams</a>"
+				+"</div>"
+				+"<div ng-show=\"onedit\">"
+				+ "<ng-team-edit data=\"editData\"  save=\"save()\" reset=\"reset()\"></ng-team-edit>"
+				+"</div>"
 				+ "'"
 				
 				+ ","
