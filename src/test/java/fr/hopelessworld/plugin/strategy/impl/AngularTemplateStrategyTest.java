@@ -47,6 +47,8 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				+ "<input type=\"text\" placeholder=\"name\" ng-model=\"data.name\" class=\"form-control\">"
 				+ "</div>"
 				+ "<input type=\"submit\">"
+				+ "<button ng-click=\"reset()\">{{\\'angular.edit.reset\\' | translate }}</button>"
+				+ "<button ng-click=\"cancel()\">{{\\'angular.edit.cancel\\' | translate }}</button>"
 				+ "</form>'"
 				
 				+ ","
@@ -100,6 +102,8 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				+ "<input type=\"datetime-local\" placeholder=\"creation\" ng-model=\"data.creation\" class=\"form-control\">"
 				+ "</div>"
 				+ "<input type=\"submit\">"
+				+ "<button ng-click=\"reset()\">{{\\'angular.edit.reset\\' | translate }}</button>"
+				+ "<button ng-click=\"cancel()\">{{\\'angular.edit.cancel\\' | translate }}</button>"
 				+ "</form>'"
 				
 				+ ","
@@ -152,6 +156,8 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				+ "<!-- TODO -->"
 				+ "</div>"
 				+ "<input type=\"submit\">"
+				+ "<button ng-click=\"reset()\">{{\\'angular.edit.reset\\' | translate }}</button>"
+				+ "<button ng-click=\"cancel()\">{{\\'angular.edit.cancel\\' | translate }}</button>"
 				+ "</form>'"
 				
 				+ ","
@@ -190,6 +196,8 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				+ "<input type=\"text\" placeholder=\"name\" ng-model=\"data.name\" class=\"form-control\">"
 				+ "</div>"
 				+ "<input type=\"submit\">"
+				+ "<button ng-click=\"reset()\">{{\\'angular.edit.reset\\' | translate }}</button>"
+				+ "<button ng-click=\"cancel()\">{{\\'angular.edit.cancel\\' | translate }}</button>"
 				+ "</form>'"
 				
 				+ ","
@@ -244,6 +252,8 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				+ "<!-- TODO -->"
 				+ "</div>"
 				+ "<input type=\"submit\">"
+				+ "<button ng-click=\"reset()\">{{\\'angular.edit.reset\\' | translate }}</button>"
+				+ "<button ng-click=\"cancel()\">{{\\'angular.edit.cancel\\' | translate }}</button>"
 				+ "</form>'"
 				
 				+ ","
@@ -288,6 +298,8 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				+ "<!-- TODO -->"
 				+ "</div>"
 				+ "<input type=\"submit\">"
+				+ "<button ng-click=\"reset()\">{{\\'angular.edit.reset\\' | translate }}</button>"
+				+ "<button ng-click=\"cancel()\">{{\\'angular.edit.cancel\\' | translate }}</button>"
 				+ "</form>'"
 				
 				+ ","

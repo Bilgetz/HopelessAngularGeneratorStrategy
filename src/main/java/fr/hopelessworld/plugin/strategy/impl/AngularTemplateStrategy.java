@@ -226,6 +226,8 @@ public final class AngularTemplateStrategy extends AbstractUniqueFileGeneratorSt
 		}
 
 		output.append("<input type=\"submit\">");
+		output.append("<button ng-click=\"reset()\">{{\\'angular.edit.reset\\' | translate }}</button>");
+		output.append("<button ng-click=\"cancel()\">{{\\'angular.edit.cancel\\' | translate }}</button>");
 		output.append("</form>");
 		output.append("'");
 		return output;
