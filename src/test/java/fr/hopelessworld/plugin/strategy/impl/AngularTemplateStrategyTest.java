@@ -172,7 +172,12 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				+ "</div>"
 				+ "<div ng-class=\"{\\'has-error\\': error != undefined && error.indexOf(\\'team\\') != -1}\" class=\"input-group\">"
 				+ "<span class=\"input-group-addon\">team</span>"
-				+ "<!-- TODO -->"
+				
+				+"<span  class=\"form-control\">{{data.team.name}}</span>"
+				+"<div class=\"input-group-btn\">"
+				+"<button type=\"button\" ng-click=\"delete(\\'team\\')\" class=\"btn btn-default\" aria-label=\"delete\"><span class=\"glyphicon glyphicon-remove\"></span>&nbsp;</button>"
+				+"<button type=\"button\" ng-click=\"change(\\'team\\')\" class=\"btn btn-default\" aria-label=\"search\"><span class=\"glyphicon glyphicon-search\"></span>&nbsp;</button>"
+				
 				+ "</div>"
 				+ "<input type=\"submit\">"
 				+ "<button type=\"button\" ng-click=\"reset()\">{{\\'angular.edit.reset\\' | translate }}</button>"
@@ -281,7 +286,12 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				+ "</div>"
 				+ "<div ng-class=\"{\\'has-error\\': error != undefined && error.indexOf(\\'team\\') != -1}\" class=\"input-group\">"
 				+ "<span class=\"input-group-addon\">team</span>"
-				+ "<!-- TODO -->"
+
+				+"<span  class=\"form-control\">{{data.team.name}}</span>"
+				+"<div class=\"input-group-btn\">"
+				+"<button type=\"button\" ng-click=\"delete(\\'team\\')\" class=\"btn btn-default\" aria-label=\"delete\"><span class=\"glyphicon glyphicon-remove\"></span>&nbsp;</button>"
+				+"<button type=\"button\" ng-click=\"change(\\'team\\')\" class=\"btn btn-default\" aria-label=\"search\"><span class=\"glyphicon glyphicon-search\"></span>&nbsp;</button>"
+				
 				+ "</div>"
 				+ "<input type=\"submit\">"
 				+ "<button type=\"button\" ng-click=\"reset()\">{{\\'angular.edit.reset\\' | translate }}</button>"

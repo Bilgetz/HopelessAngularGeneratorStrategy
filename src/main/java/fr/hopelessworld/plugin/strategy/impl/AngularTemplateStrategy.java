@@ -198,7 +198,18 @@ public final class AngularTemplateStrategy extends AbstractUniqueFileGeneratorSt
 
 				if (field.getAnnotation(ManyToOne.class) != null || field.getAnnotation(OneToOne.class) != null) {
 					/** c'est 1 entité */
-					output.append("<!-- TODO -->");
+
+					output.append("<span  class=\"form-control\">{{data.team.name}}</span>");
+					output.append("<div class=\"input-group-btn\">");
+					output.append(
+							"<button type=\"button\" ng-click=\"delete(\\'team\\')\" class=\"btn btn-default\" aria-label=\"delete\">");
+					output.append("<span class=\"glyphicon glyphicon-remove\"></span>&nbsp;");
+					output.append("</button>");
+					output.append(
+							"<button type=\"button\" ng-click=\"change(\\'team\\')\" class=\"btn btn-default\" aria-label=\"search\">");
+					output.append("<span class=\"glyphicon glyphicon-search\"></span>&nbsp;");
+					output.append("</button>");
+
 				} else if (field.getAnnotation(OneToMany.class) != null
 						|| field.getAnnotation(ManyToMany.class) != null) {
 					/* une liste */
