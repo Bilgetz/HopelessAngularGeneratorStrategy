@@ -26,7 +26,7 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "angularApp.controller('PlayersCtrl',['$scope','$rootScope','$translate','PlayerFactory',PlayersCtrl]);"
 				+ "function PlayersCtrl($scope,$rootScope,$translate,$PlayerFactory) {"
 				+ "$rootScope.loading = true;"
-				
+				+ "$scope.page = {};"
 				+ "$scope.criterias = [];"
 				+ "$scope.criteriaField = [{id: 'name', value:'name', type: 'text'}];"
 				+ "$scope.criteriaOperation = [{id: ':', value:'='}, {id: '<', value:'<='}, {id: '>', value:'>='}];"
@@ -63,6 +63,14 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "$scope.pageChanged();"
 				+ "};"
 			
+				
+				+ "$scope.selectEntity = function(entity, $event) {"
+					+ "if($scope.select != undefined) {"
+						+ "$event.preventDefault();"
+					+ "$scope.select({entity:entity});"
+					+ "}"
+				+ "};"
+				
 			
 				+ "$scope.pageChanged();"
 				
@@ -133,7 +141,7 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "angularApp.controller('PlayersCtrl',['$scope','$rootScope','$translate','PlayerFactory',PlayersCtrl]);"
 				+ "function PlayersCtrl($scope,$rootScope,$translate,$PlayerFactory) {"
 				+ "$rootScope.loading = true;"
-				
+				+ "$scope.page = {};"
 				+ "$scope.criterias = [];"
 				+ "$scope.criteriaField = ["
 				+ "{id: 'name', value:'name', type: 'text'},"
@@ -173,6 +181,12 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "$scope.pageChanged();"
 				+ "};"
 			
+				+ "$scope.selectEntity = function(entity, $event) {"
+					+ "if($scope.select != undefined) {"
+						+ "$event.preventDefault();"
+					+ "$scope.select({entity:entity});"
+					+ "}"
+				+ "};"
 			
 				+ "$scope.pageChanged();"
 				
@@ -244,7 +258,7 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "angularApp.controller('PlayersCtrl',['$scope','$rootScope','$translate','PlayerFactory','TeamFactory',PlayersCtrl]);"
 				+ "function PlayersCtrl($scope,$rootScope,$translate,$PlayerFactory,$TeamFactory) {"
 				+ "$rootScope.loading = true;"
-				
+				+ "$scope.page = {};"
 				+ "$scope.criterias = [];"
 				+ "$scope.criteriaField = ["
 				+ "{id: 'name', value:'name', type: 'text'},"
@@ -290,6 +304,12 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "$scope.pageChanged();"
 				+ "};"
 			
+				+ "$scope.selectEntity = function(entity, $event) {"
+					+ "if($scope.select != undefined) {"
+						+ "$event.preventDefault();"
+						+ "$scope.select({entity:entity});"
+					+ "}"
+				+ "};"
 			
 				+ "$scope.pageChanged();"
 				
@@ -354,7 +374,7 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "angularApp.controller('TeamsCtrl',['$scope','$rootScope','$translate','TeamFactory',TeamsCtrl]);"
 				+ "function TeamsCtrl($scope,$rootScope,$translate,$TeamFactory) {"
 				+ "$rootScope.loading = true;"
-				
+				+ "$scope.page = {};"
 				+ "$scope.criterias = [];"
 				+ "$scope.criteriaField = ["
 				+ "{id: 'name', value:'name', type: 'text'}"
@@ -392,6 +412,14 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "$scope.selectedValue = '';"
 				+ "$scope.pageChanged();"
 				+ "};"
+				
+				+ "$scope.selectEntity = function(entity, $event) {"
+					+ "if($scope.select != undefined) {"
+						+ "$event.preventDefault();"
+						+ "$scope.select({entity:entity});"
+					+ "}"
+				+ "};"
+				
 				
 				+ "$scope.pageChanged();"
 				
@@ -468,7 +496,7 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "angularApp.controller('PlayersCtrl',['$scope','$rootScope','$translate','PlayerFactory','TeamFactory',PlayersCtrl]);"
 				+ "function PlayersCtrl($scope,$rootScope,$translate,$PlayerFactory,$TeamFactory) {"
 				+ "$rootScope.loading = true;"
-				
+				+ "$scope.page = {};"
 				+ "$scope.criterias = [];"
 				+ "$scope.criteriaField = ["
 				+ "{id: 'name', value:'name', type: 'text'},"
@@ -514,6 +542,13 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "$scope.pageChanged();"
 				+ "};"
 			
+				+ "$scope.selectEntity = function(entity, $event) {"
+					+ "if($scope.select != undefined) {"
+						+ "$event.preventDefault();"
+						+ "$scope.select({entity:entity});"
+					+ "}"
+				+ "};"
+				
 			
 				+ "$scope.pageChanged();"
 				
@@ -579,7 +614,7 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "angularApp.controller('TeamsCtrl',['$scope','$rootScope','$translate','TeamFactory','PlayerFactory',TeamsCtrl]);"
 				+ "function TeamsCtrl($scope,$rootScope,$translate,$TeamFactory,$PlayerFactory) {"
 				+ "$rootScope.loading = true;"
-				
+				+ "$scope.page = {};"
 				+ "$scope.criterias = [];"
 				+ "$scope.criteriaField = ["
 				+ "{id: 'name', value:'name', type: 'text'},"
@@ -624,6 +659,14 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "$scope.selectedValue = '';"
 				+ "$scope.pageChanged();"
 				+ "};"
+				
+				+ "$scope.selectEntity = function(entity, $event) {"
+					+ "if($scope.select != undefined) {"
+						+ "$event.preventDefault();"
+					+ "$scope.select({entity:entity});"
+					+ "}"
+				+ "};"
+				
 				
 				+ "$scope.pageChanged();"
 				
@@ -681,8 +724,6 @@ public class AngularControllerStrategyTest extends AbstractTestStrategy {
 				+ "$rootScope.loading = false;"
 				+ "});"
 				+ "};"
-				
-
 				
 				
 				+ "";

@@ -280,7 +280,7 @@ public final class AngularTemplateStrategy extends AbstractUniqueFileGeneratorSt
 		output.append("<div ng-repeat=\"entity in entities\">");
 		output.append("<a href=\"");
 		output.append(this.getUrlForEntity("entity", entity));
-		output.append("\">{{");
+		output.append("\" ng-click=\"selectEntity(entity)\">{{");
 		output.append(this.getShowName("entity.", entity));
 		output.append("}}</a>");
 		output.append("<hr />");

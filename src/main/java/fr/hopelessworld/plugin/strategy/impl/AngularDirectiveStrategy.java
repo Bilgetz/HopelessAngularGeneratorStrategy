@@ -2,7 +2,13 @@ package fr.hopelessworld.plugin.strategy.impl;
 
 import java.util.Collection;
 
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
 import fr.hopelessworld.plugin.analyzer.AnalizedEntity;
+import fr.hopelessworld.plugin.analyzer.Field;
 import fr.hopelessworld.plugin.strategy.AbstractUniqueFileGeneratorStrategy;
 import fr.hopelessworld.plugin.utils.AnalizedEntityUtils;
 
@@ -95,6 +101,29 @@ public final class AngularDirectiveStrategy extends AbstractUniqueFileGeneratorS
 
 		directive.append("controller :['$scope',  function($scope) {");
 
+		directive.append("var template = {");
+
+		boolean first = true;
+		for (Field field : entity.getFields()) {
+			if (field.getAnnotation(ManyToOne.class) != null || field.getAnnotation(OneToOne.class) != null
+					|| field.getAnnotation(OneToMany.class) != null || field.getAnnotation(ManyToMany.class) != null) {
+				if (!first) {
+					directive.append("'");
+				} else {
+					first = false;
+				}
+
+				directive.append(field.getSimpleName()).append(": '");
+				CharSequence tagName = AnalizedEntityUtils.getEntitiesTagName(field.asAnalyzedEntity());
+				directive.append("<").append(tagName);
+				directive.append(" select=\"select(entity)\"></").append(tagName).append(">");
+				directive.append("<button type=\"button\" ng-click=\"cancel()\" >Cancel</button>");
+
+				directive.append("'");
+			}
+		}
+		directive.append("};");
+
 		directive.append("$scope.deleteEntity = function(entityName, index) {");
 		directive.append("if(index != undefined && index >  0) {");
 		directive.append("$scope.data[entityName].splice(index, 1);");
@@ -102,8 +131,29 @@ public final class AngularDirectiveStrategy extends AbstractUniqueFileGeneratorS
 		directive.append("$scope.data[entityName] = {};");
 		directive.append("}");
 		directive.append("};");
-		directive.append("$scope.deleteEntity = function(entityName) {");
-		directive.append("alert(\"change\" + entityName);");
+
+		directive.append("$scope.changeEntity = function(entityName, index) {");
+
+		directive.append("var modalInstance = $uibModal.open({");
+		directive.append("template: template[entityName],");
+		directive.append("controller: ['$scope', '$modalInstance',function ($scope, $uibModalInstance) {");
+		directive.append("$scope.select = function (entity) {");
+		directive.append("$uibModalInstance.close(entity);");
+		directive.append("};");
+		directive.append("$scope.cancel = function () {");
+		directive.append("$uibModalInstance.dismiss('cancel');");
+		directive.append("};");
+		directive.append("}]");
+		directive.append("});");
+
+		directive.append("modalInstance.result.then(function (entity) {");
+		directive.append("if(index != undefined && index >  0) {");
+		directive.append("$scope.data[entityName][index] =entity ;");
+		directive.append("} else  {");
+		directive.append("$scope.data[entityName] = entity;");
+		directive.append("}");
+		directive.append("}, function () {});");
+
 		directive.append("};");
 
 		directive.append("}]");
@@ -124,12 +174,9 @@ public final class AngularDirectiveStrategy extends AbstractUniqueFileGeneratorS
 		directive.append("restrict : 'E',");
 		directive.append("template : angularTemplate.").append(entityName).append("List,");
 		directive.append("scope : {");
-		directive.append("entities :'=',");
-		directive.append("pageChanged : '&',");
-		directive.append("subResources: '=',");
-		directive.append("criterias: '=',");
-		directive.append("criteriaField: '='");
-		directive.append("}");
+		directive.append("select : '&'");
+		directive.append("},");
+		directive.append("controller : '").append(entitiesName).append("Ctrl'");
 		directive.append("}");
 		directive.append("});");
 

@@ -66,7 +66,7 @@ public class AngularControllerStrategy extends AbstractUniqueFileGeneratorStrate
 		controller.append(") {");
 		// Corp du controller
 		controller.append("$rootScope.loading = true;");
-
+		controller.append("$scope.page = {};");
 		controller.append("$scope.criterias = [];");
 		controller.append("$scope.criteriaField = [");
 
@@ -181,6 +181,14 @@ public class AngularControllerStrategy extends AbstractUniqueFileGeneratorStrate
 		controller.append("$scope.selectedOperation= {};");
 		controller.append("$scope.selectedValue = '';");
 		controller.append("$scope.pageChanged();");
+		controller.append("};");
+
+		// method for call select if selected entity
+		controller.append("$scope.selectEntity = function(entity, $event) {");
+		controller.append("if($scope.select != undefined) {");
+		controller.append("$event.preventDefault();");
+		controller.append("$scope.select({entity:entity});");
+		controller.append("}");
 		controller.append("};");
 
 		// call to pageChanged();"

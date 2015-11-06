@@ -53,7 +53,10 @@ public final class AnalizedEntityUtils {
 	 */
 	public static String getEditDirectiveName(AnalizedEntity entity) {
 		return getDirectiveName(entity) + "Edit";
+	}
 
+	public static String getEntitiesDirectiveName(AnalizedEntity entity) {
+		return "ng" + getEntitiesName(entity.getSimpleName());
 	}
 
 	/**
@@ -96,6 +99,17 @@ public final class AnalizedEntityUtils {
 	 */
 	public static CharSequence getEditTagName(AnalizedEntity entity) {
 		return toTagName(getEditDirectiveName(entity));
+	}
+
+	/**
+	 * Gets the entities tag name.
+	 *
+	 * @param entity
+	 *            the entity
+	 * @return the entities tag name
+	 */
+	public static CharSequence getEntitiesTagName(AnalizedEntity entity) {
+		return toTagName(getEntitiesDirectiveName(entity));
 	}
 
 }
