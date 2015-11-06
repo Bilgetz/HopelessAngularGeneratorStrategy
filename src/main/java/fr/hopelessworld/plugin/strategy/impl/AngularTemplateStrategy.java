@@ -163,7 +163,7 @@ public final class AngularTemplateStrategy extends AbstractUniqueFileGeneratorSt
 		CharSequence angularEditDirective = AnalizedEntityUtils.getEditTagName(entity);
 
 		output.append("<").append(angularEditDirective)
-				.append(" data=\"editData\"  save=\"save()\" reset=\"reset()\" cancel=\"cancel()\" delete=\"delete(entityName)\" change=\"change(entityName)\"></")
+				.append(" data=\"editData\"  save=\"save()\" reset=\"reset()\" cancel=\"cancel()\"></")
 				.append(angularEditDirective).append(">");
 		output.append("</div>");
 

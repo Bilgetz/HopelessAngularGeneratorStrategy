@@ -58,7 +58,8 @@ public abstract class AbstractTestStrategy {
 		CharSequence sequence = getStrategy().generate(entities);
 
 		Assert.assertNotNull("Sequence is null", sequence);
-		Assert.assertEquals("Sequence bad generate", getExpectedOneEntity(), sequence.toString());
+		Assert.assertEquals("Sequence bad generate ( " + this.getClass().getSimpleName() + ")", getExpectedOneEntity(),
+				sequence.toString());
 	}
 
 	@Test
@@ -79,7 +80,8 @@ public abstract class AbstractTestStrategy {
 		CharSequence sequence = getStrategy().generate(entities);
 
 		Assert.assertNotNull("Sequence is null", sequence);
-		Assert.assertEquals("Sequence bad generate", getExpectedOneEntityWith2Field(), sequence.toString());
+		Assert.assertEquals("Sequence bad generate ( " + this.getClass().getSimpleName() + ")",
+				getExpectedOneEntityWith2Field(), sequence.toString());
 	}
 
 	@Test
@@ -111,7 +113,8 @@ public abstract class AbstractTestStrategy {
 		CharSequence sequence = getStrategy().generate(entities);
 
 		Assert.assertNotNull("Sequence is null", sequence);
-		Assert.assertEquals("Sequence bad generate", getExpectedOneEntityWith1EntityField(), sequence.toString());
+		Assert.assertEquals("Sequence bad generate ( " + this.getClass().getSimpleName() + ")",
+				getExpectedOneEntityWith1EntityField(), sequence.toString());
 	}
 
 	@Test
@@ -144,7 +147,8 @@ public abstract class AbstractTestStrategy {
 		CharSequence sequence = getStrategy().generate(entities);
 
 		Assert.assertNotNull("Sequence is null", sequence);
-		Assert.assertEquals("Sequence bad generate", getExpectedOneEntityWithOneToManyField(), sequence.toString());
+		Assert.assertEquals("Sequence bad generate ( " + this.getClass().getSimpleName() + ")",
+				getExpectedOneEntityWithOneToManyField(), sequence.toString());
 	}
 
 }
