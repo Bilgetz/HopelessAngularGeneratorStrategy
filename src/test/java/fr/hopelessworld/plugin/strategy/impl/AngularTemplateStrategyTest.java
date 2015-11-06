@@ -342,10 +342,29 @@ public class AngularTemplateStrategyTest extends AbstractTestStrategy {
 				+ "<span class=\"input-group-addon\">name</span>"
 				+ "<input type=\"text\" placeholder=\"name\" ng-model=\"data.name\" class=\"form-control\">"
 				+ "</div>"
-				+ "<div ng-class=\"{\\'has-error\\': error != undefined && error.indexOf(\\'players\\') != -1}\" class=\"input-group\">"
-				+ "<span class=\"input-group-addon\">players</span>"
-				+ "<!-- TODO -->"
-				+ "</div>"
+				
+				
+				+"<div class=\"panel panel-default\">"
+				
+				+"<div ng-class=\"{\\'has-error\\': error != undefined && error.indexOf(\\'players\\') != -1}\" class=\"panel-heading\">"
+				+"<span>players</span>"
+				+"</div>"
+				
+				+"<div class=\"panel-body\">"
+				
+					+"<div ng-repeat=\"entity in data.players\" class=\"input-group\">"
+						+"<span class=\"form-control\">{{entity.name}}</span>"
+						+"<div class=\"input-group-btn\">"
+							+"<button type=\"button\" ng-click=\"deleteEntity(\\'players\\',$index)\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-remove\"></span>&nbsp;</button>"
+							+"<button type=\"button\" ng-click=\"changeEntity(\\'players\\',$index)\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-search\"></span>&nbsp;</button>"
+						+"</div>"
+					+"</div>"
+					
+					+"<button type=\"button\" ng-click=\"addEntity(\\'players\\',$index)\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-plus\"></span>&nbsp;</button>"
+					
+				+"</div>"
+				
+				
 				+ "<input type=\"submit\">"
 				+ "<button type=\"button\" ng-click=\"reset()\">{{\\'angular.edit.reset\\' | translate }}</button>"
 				+ "<button type=\"button\" ng-click=\"cancel()\">{{\\'angular.edit.cancel\\' | translate }}</button>"

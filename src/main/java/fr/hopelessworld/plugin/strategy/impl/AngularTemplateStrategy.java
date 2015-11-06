@@ -186,6 +186,35 @@ public final class AngularTemplateStrategy extends AbstractUniqueFileGeneratorSt
 
 			if (field.getAnnotation(Id.class) != null) {
 				output.append("<!-- id not show -->");
+			} else if (field.getAnnotation(OneToMany.class) != null || field.getAnnotation(ManyToMany.class) != null) {
+				/* une liste */
+
+				output.append("<div class=\"panel panel-default\">");
+
+				output.append(
+						"<div ng-class=\"{\\'has-error\\': error != undefined && error.indexOf(\\'players\\') != -1}\" class=\"panel-heading\">");
+				output.append("<span>").append(field.getSimpleName()).append("</span>");
+				output.append("</div>");
+
+				output.append("<div class=\"panel-body\">");
+
+				output.append("<div ng-repeat=\"entity in data.").append(field.getSimpleName())
+						.append("\" class=\"input-group\">");
+				output.append("<span class=\"form-control\">{{")
+						.append(this.getShowName("entity.", field.asAnalyzedEntity())).append("}}</span>");
+				output.append("<div class=\"input-group-btn\">");
+				output.append("<button type=\"button\" ng-click=\"deleteEntity(\\'").append(field.getSimpleName())
+						.append("\\',$index)\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-remove\"></span>&nbsp;</button>");
+				output.append("<button type=\"button\" ng-click=\"changeEntity(\\'").append(field.getSimpleName())
+						.append("\\',$index)\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-search\"></span>&nbsp;</button>");
+				output.append("</div>");
+				output.append("</div>");
+
+				output.append("<button type=\"button\" ng-click=\"addEntity(\\'").append(field.getSimpleName()).append(
+						"\\',$index)\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-plus\"></span>&nbsp;</button>");
+
+				output.append("</div>");
+
 			} else {
 				CharSequence fieldName = field.getSimpleName();
 
@@ -210,10 +239,6 @@ public final class AngularTemplateStrategy extends AbstractUniqueFileGeneratorSt
 					output.append("<span class=\"glyphicon glyphicon-search\"></span>&nbsp;");
 					output.append("</button>");
 
-				} else if (field.getAnnotation(OneToMany.class) != null
-						|| field.getAnnotation(ManyToMany.class) != null) {
-					/* une liste */
-					output.append("<!-- TODO -->");
 				} else if (field.getAnnotation(Column.class) != null) {
 					/* un champ basic */
 					TypeMirror typeMirror = field.asType();
