@@ -99,7 +99,7 @@ public final class AngularDirectiveStrategy extends AbstractUniqueFileGeneratorS
 		directive.append("error: '='");
 		directive.append("},");
 
-		directive.append("controller :['$scope',  function($scope) {");
+		directive.append("controller :['$scope','$uibModal',function($scope,$uibModal) {");
 
 		directive.append("var template = {");
 
@@ -132,7 +132,7 @@ public final class AngularDirectiveStrategy extends AbstractUniqueFileGeneratorS
 		directive.append("}");
 		directive.append("};");
 
-		directive.append("function getModal() {");
+		directive.append("function getModal(entityName) {");
 		directive.append("return $uibModal.open({");
 		directive.append("template: template[entityName],");
 		directive.append("controller: ['$scope', '$modalInstance',function ($scope, $uibModalInstance) {");
@@ -147,7 +147,7 @@ public final class AngularDirectiveStrategy extends AbstractUniqueFileGeneratorS
 		directive.append("}");
 
 		directive.append("$scope.changeEntity = function(entityName, index) {");
-		directive.append("var modalInstance = getModal();");
+		directive.append("var modalInstance = getModal(entityName);");
 		directive.append("modalInstance.result.then(function (entity) {");
 		directive.append("if(index != undefined && index >  0) {");
 		directive.append("$scope.data[entityName][index] =entity ;");
@@ -158,7 +158,7 @@ public final class AngularDirectiveStrategy extends AbstractUniqueFileGeneratorS
 		directive.append("};");
 
 		directive.append("$scope.addEntity = function(entityName) {");
-		directive.append("var modalInstance = getModal();");
+		directive.append("var modalInstance = getModal(entityName);");
 		directive.append("modalInstance.result.then(function (entity) {");
 		directive.append("$scope.data[entityName].push(entity);");
 		directive.append("}, function () {});");

@@ -34,7 +34,7 @@ public class AngularDirectiveStrategyTest extends AbstractTestStrategy {
 					+"cancel : '&',"
 					+"error: '='"
 				+"},"
-				+ "controller :['$scope',  function($scope) {"
+				+ "controller :['$scope','$uibModal',function($scope,$uibModal) {"
 				
 					+"var template = {"
 					+"};"
@@ -47,7 +47,7 @@ public class AngularDirectiveStrategyTest extends AbstractTestStrategy {
 					+ "}"
 					+ "};"
 					
-					+"function getModal() {"
+					+"function getModal(entityName) {"
 						+ "return $uibModal.open({"
 							+ "template: template[entityName],"
 							+ "controller: ['$scope', '$modalInstance',function ($scope, $uibModalInstance) {"
@@ -62,7 +62,7 @@ public class AngularDirectiveStrategyTest extends AbstractTestStrategy {
 					+"}"
 					
 					+ "$scope.changeEntity = function(entityName, index) {"
-						+ "var modalInstance = getModal();"
+						+ "var modalInstance = getModal(entityName);"
 							
 						+ "modalInstance.result.then(function (entity) {"
 							+ "if(index != undefined && index >  0) {"
@@ -75,7 +75,7 @@ public class AngularDirectiveStrategyTest extends AbstractTestStrategy {
 					+ "};"
 					
 					+ "$scope.addEntity = function(entityName) {"
-						+ "var modalInstance = getModal();"
+						+ "var modalInstance = getModal(entityName);"
 						+ "modalInstance.result.then(function (entity) {"
 							+ "$scope.data[entityName].push(entity);"
 						+ "}, function () {});"
@@ -127,7 +127,7 @@ public class AngularDirectiveStrategyTest extends AbstractTestStrategy {
 				+"error: '='"
 				+"},"
 				
-				+ "controller :['$scope',  function($scope) {"
+				+ "controller :['$scope','$uibModal',function($scope,$uibModal) {"
 				
 					+"var template = {"
 					+"};"
@@ -140,7 +140,7 @@ public class AngularDirectiveStrategyTest extends AbstractTestStrategy {
 					+ "}"
 					+ "};"
 					
-					+"function getModal() {"
+					+"function getModal(entityName) {"
 					+ "return $uibModal.open({"
 						+ "template: template[entityName],"
 						+ "controller: ['$scope', '$modalInstance',function ($scope, $uibModalInstance) {"
@@ -155,7 +155,7 @@ public class AngularDirectiveStrategyTest extends AbstractTestStrategy {
 				+"}"
 				
 				+ "$scope.changeEntity = function(entityName, index) {"
-					+ "var modalInstance = getModal();"
+					+ "var modalInstance = getModal(entityName);"
 						
 					+ "modalInstance.result.then(function (entity) {"
 						+ "if(index != undefined && index >  0) {"
@@ -168,7 +168,7 @@ public class AngularDirectiveStrategyTest extends AbstractTestStrategy {
 				+ "};"
 				
 				+ "$scope.addEntity = function(entityName) {"
-					+ "var modalInstance = getModal();"
+					+ "var modalInstance = getModal(entityName);"
 					+ "modalInstance.result.then(function (entity) {"
 						+ "$scope.data[entityName].push(entity);"
 					+ "}, function () {});"
@@ -221,7 +221,7 @@ public class AngularDirectiveStrategyTest extends AbstractTestStrategy {
 				+"error: '='"
 				+"},"
 				
-				+ "controller :['$scope',  function($scope) {"
+				+ "controller :['$scope','$uibModal',function($scope,$uibModal) {"
 				
 					+"var template = {"
 					+"team: '<ng-teams select=\"select(entity)\"></ng-teams><button type=\"button\" ng-click=\"cancel()\" >Cancel</button>'"
@@ -235,7 +235,7 @@ public class AngularDirectiveStrategyTest extends AbstractTestStrategy {
 					+ "}"
 					+ "};"
 					
-					+"function getModal() {"
+					+"function getModal(entityName) {"
 					+ "return $uibModal.open({"
 						+ "template: template[entityName],"
 						+ "controller: ['$scope', '$modalInstance',function ($scope, $uibModalInstance) {"
@@ -250,7 +250,7 @@ public class AngularDirectiveStrategyTest extends AbstractTestStrategy {
 				+"}"
 				
 				+ "$scope.changeEntity = function(entityName, index) {"
-					+ "var modalInstance = getModal();"
+					+ "var modalInstance = getModal(entityName);"
 						
 					+ "modalInstance.result.then(function (entity) {"
 						+ "if(index != undefined && index >  0) {"
@@ -263,7 +263,7 @@ public class AngularDirectiveStrategyTest extends AbstractTestStrategy {
 				+ "};"
 				
 				+ "$scope.addEntity = function(entityName) {"
-					+ "var modalInstance = getModal();"
+					+ "var modalInstance = getModal(entityName);"
 					+ "modalInstance.result.then(function (entity) {"
 						+ "$scope.data[entityName].push(entity);"
 					+ "}, function () {});"
@@ -307,7 +307,7 @@ public class AngularDirectiveStrategyTest extends AbstractTestStrategy {
 				+"error: '='"
 				+"},"
 				
-				+ "controller :['$scope',  function($scope) {"
+				+ "controller :['$scope','$uibModal',function($scope,$uibModal) {"
 				
 					+"var template = {"
 					+"};"
@@ -320,7 +320,7 @@ public class AngularDirectiveStrategyTest extends AbstractTestStrategy {
 					+ "}"
 					+ "};"
 					
-					+"function getModal() {"
+					+"function getModal(entityName) {"
 					+ "return $uibModal.open({"
 						+ "template: template[entityName],"
 						+ "controller: ['$scope', '$modalInstance',function ($scope, $uibModalInstance) {"
@@ -335,7 +335,7 @@ public class AngularDirectiveStrategyTest extends AbstractTestStrategy {
 				+"}"
 				
 				+ "$scope.changeEntity = function(entityName, index) {"
-					+ "var modalInstance = getModal();"
+					+ "var modalInstance = getModal(entityName);"
 						
 					+ "modalInstance.result.then(function (entity) {"
 						+ "if(index != undefined && index >  0) {"
@@ -348,7 +348,7 @@ public class AngularDirectiveStrategyTest extends AbstractTestStrategy {
 				+ "};"
 				
 				+ "$scope.addEntity = function(entityName) {"
-					+ "var modalInstance = getModal();"
+					+ "var modalInstance = getModal(entityName);"
 					+ "modalInstance.result.then(function (entity) {"
 						+ "$scope.data[entityName].push(entity);"
 					+ "}, function () {});"
@@ -403,7 +403,7 @@ public class AngularDirectiveStrategyTest extends AbstractTestStrategy {
 				+"error: '='"
 				+"},"
 				
-				+ "controller :['$scope',  function($scope) {"
+				+ "controller :['$scope','$uibModal',function($scope,$uibModal) {"
 				
 					+"var template = {"
 					+"team: '<ng-teams select=\"select(entity)\"></ng-teams><button type=\"button\" ng-click=\"cancel()\" >Cancel</button>'"
@@ -417,7 +417,7 @@ public class AngularDirectiveStrategyTest extends AbstractTestStrategy {
 					+ "}"
 					+ "};"
 					
-					+"function getModal() {"
+					+"function getModal(entityName) {"
 					+ "return $uibModal.open({"
 						+ "template: template[entityName],"
 						+ "controller: ['$scope', '$modalInstance',function ($scope, $uibModalInstance) {"
@@ -432,7 +432,7 @@ public class AngularDirectiveStrategyTest extends AbstractTestStrategy {
 				+"}"
 				
 				+ "$scope.changeEntity = function(entityName, index) {"
-					+ "var modalInstance = getModal();"
+					+ "var modalInstance = getModal(entityName);"
 						
 					+ "modalInstance.result.then(function (entity) {"
 						+ "if(index != undefined && index >  0) {"
@@ -445,7 +445,7 @@ public class AngularDirectiveStrategyTest extends AbstractTestStrategy {
 				+ "};"
 				
 				+ "$scope.addEntity = function(entityName) {"
-					+ "var modalInstance = getModal();"
+					+ "var modalInstance = getModal(entityName);"
 					+ "modalInstance.result.then(function (entity) {"
 						+ "$scope.data[entityName].push(entity);"
 					+ "}, function () {});"
@@ -489,7 +489,7 @@ public class AngularDirectiveStrategyTest extends AbstractTestStrategy {
 				+"error: '='"
 				+"},"
 				
-				+ "controller :['$scope',  function($scope) {"
+				+ "controller :['$scope','$uibModal',function($scope,$uibModal) {"
 				
 					+"var template = {"
 					+"players: '<ng-players select=\"select(entity)\"></ng-players><button type=\"button\" ng-click=\"cancel()\" >Cancel</button>'"
@@ -503,7 +503,7 @@ public class AngularDirectiveStrategyTest extends AbstractTestStrategy {
 					+ "}"
 					+ "};"
 					
-					+"function getModal() {"
+					+"function getModal(entityName) {"
 					+ "return $uibModal.open({"
 						+ "template: template[entityName],"
 						+ "controller: ['$scope', '$modalInstance',function ($scope, $uibModalInstance) {"
@@ -518,7 +518,7 @@ public class AngularDirectiveStrategyTest extends AbstractTestStrategy {
 				+"}"
 				
 				+ "$scope.changeEntity = function(entityName, index) {"
-					+ "var modalInstance = getModal();"
+					+ "var modalInstance = getModal(entityName);"
 						
 					+ "modalInstance.result.then(function (entity) {"
 						+ "if(index != undefined && index >  0) {"
@@ -531,7 +531,7 @@ public class AngularDirectiveStrategyTest extends AbstractTestStrategy {
 				+ "};"
 				
 				+ "$scope.addEntity = function(entityName) {"
-					+ "var modalInstance = getModal();"
+					+ "var modalInstance = getModal(entityName);"
 					+ "modalInstance.result.then(function (entity) {"
 						+ "$scope.data[entityName].push(entity);"
 					+ "}, function () {});"
